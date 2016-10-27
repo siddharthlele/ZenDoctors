@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="unverified_message">It seems you haven\'t verified your Email Address yet. You need to verify your Email Address before you can start using Zen Pet Doctors.
-        \n\nThis is a necessary step for us to know your Email is valid and can receive important Email notifications such as appointments, notices, updates, etc from us.
-        \n\nPress the <b>\"Send Verification Email\"</b> button to receive the verification email. You can choose <b>\"Later\"</b> too. However, your Clinic will not be displayed to Users until you verify.
-        \n\nThe process may take a couple of hours to reflect in the system after verification.</string>
+    <string name="unverified_message">To start using Zen Pets - Doctors, you need to verify your Email Address.
+        \n\nThis is a necessary step for us to know your Email is valid and can receive important Email notifications such as appointments, notices, upgrades / updates, etc from us.
+        \n\nPress the <b>\"Send Verification Email\"</b> button to receive the verification email.
+        \n\nThe process may take a few hours to reflect in the system after verification.</string>
 
     <string name="clinic_profile">Now that you have created your new account on Zen Pets, we need some information about your Clinic / Hospital before your profile can be made public and available for all Zen Pets users.
     \n\nTo add the Clinic / Hospital information now, click the \"Add Clinic Details\". You can choose to add the information Later too. However, your Clinic / Hospital listing will remain private.</string>

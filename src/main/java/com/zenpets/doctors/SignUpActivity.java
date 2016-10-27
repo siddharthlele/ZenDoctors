@@ -37,7 +37,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.zenpets.doctors.legal.PrivacyPolicyActivity;
 import com.zenpets.doctors.legal.SellerAgreementActivity;
 import com.zenpets.doctors.utils.TypefaceSpan;
@@ -55,16 +54,12 @@ public class SignUpActivity extends AppCompatActivity {
     FirebaseUser user;
 
     /** CAST THE LAYOUT ELEMENTS **/
-    @BindView(R.id.edtClinicName)
-    AppCompatEditText edtClinicName;
     @BindView(R.id.edtEmailAddress) AppCompatEditText edtEmailAddress;
     @BindView(R.id.edtPassword) AppCompatEditText edtPassword;
     @BindView(R.id.edtConfirmPassword) AppCompatEditText edtConfirmPassword;
-    @BindView(R.id.txtTermsOfService)
-    AppCompatTextView txtTermsOfService;
+    @BindView(R.id.txtTermsOfService) AppCompatTextView txtTermsOfService;
 
     /****** DATA TYPES FOR ACCOUNT DETAILS *****/
-    String CLINIC_NAME = null;
     String EMAIL_ADDRESS = null;
     String PASSWORD = null;
     String CONFIRM_PASSWORD = null;
@@ -135,19 +130,16 @@ public class SignUpActivity extends AppCompatActivity {
 
         /** HIDE THE KEYBOARD **/
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(edtClinicName.getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(edtEmailAddress.getWindowToken(), 0);
 
         /** COLLECT THE NECESSARY DATA **/
-        CLINIC_NAME = edtClinicName.getText().toString().trim();
         EMAIL_ADDRESS = edtEmailAddress.getText().toString().trim();
         PASSWORD = edtPassword.getText().toString().trim();
         CONFIRM_PASSWORD = edtConfirmPassword.getText().toString().trim();
         boolean blnValidEmail = isValidEmail(EMAIL_ADDRESS);
 
         /** VALIDATE THE DATA **/
-        if (TextUtils.isEmpty(CLINIC_NAME)) {
-            edtClinicName.setError("The Clinic Name cannot be empty");
-        } else if (TextUtils.isEmpty(EMAIL_ADDRESS))    {
+        if (TextUtils.isEmpty(EMAIL_ADDRESS))    {
             edtEmailAddress.setError("Provide your Email Address");
         } else if (!blnValidEmail)  {
             edtEmailAddress.setError("Provide a valid Email Address");
@@ -181,69 +173,39 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful())   {
+                    /* GET THE NEW USERS INSTANCE */
                     user = mAuth.getCurrentUser();
+
                     if (user != null)   {
-                        UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
-                                .setDisplayName(CLINIC_NAME)
-                                .build();
-                        user.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful())   {
+                        String message = getResources().getString(R.string.unverified_message);
+                        new MaterialDialog.Builder(SignUpActivity.this)
+                                .icon(ContextCompat.getDrawable(SignUpActivity.this, R.drawable.ic_info_outline_black_24dp))
+                                .title("Validate Email Address")
+                                .cancelable(false)
+                                .content(message)
+                                .positiveText("Send Verification Email")
+                                .theme(Theme.LIGHT)
+                                .typeface("HelveticaNeueLTW1G-MdCn.otf", "HelveticaNeueLTW1G-Cn.otf")
+                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
 
-                                    String message = getResources().getString(R.string.unverified_message);
-                                    new MaterialDialog.Builder(SignUpActivity.this)
-                                            .icon(ContextCompat.getDrawable(SignUpActivity.this, R.drawable.ic_info_outline_black_24dp))
-                                            .title("Validate Email Address")
-                                            .cancelable(true)
-                                            .content(message)
-                                            .positiveText("Send Verification Email")
-                                            .negativeText("Later")
-                                            .theme(Theme.LIGHT)
-                                            .typeface("HelveticaNeueLTW1G-MdCn.otf", "HelveticaNeueLTW1G-Cn.otf")
-                                            .onPositive(new MaterialDialog.SingleButtonCallback() {
-                                                @Override
-                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                                    user.sendEmailVerification();
+                                        /** SEND THE VERIFICATION MAILER **/
+                                        user.sendEmailVerification();
 
-                                                    /** LOGOUT THE USER **/
-                                                    mAuth.signOut();
+                                        /** LOGOUT THE USER **/
+                                        mAuth.signOut();
 
-                                                    /** DISMISS THE DIALOG **/
-                                                    dialog.dismiss();
+                                        /** DISMISS THE DIALOG **/
+                                        dialog.dismiss();
 
-                                                    /** FINISH THE ACTIVITY **/
-                                                    Toast.makeText(getApplicationContext(), "Your account was created successfully", Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent();
-                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                    finish();
-                                                }
-                                            })
-                                            .onNegative(new MaterialDialog.SingleButtonCallback() {
-                                                @Override
-                                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-
-                                                    /** LOGOUT THE USER **/
-                                                    mAuth.signOut();
-
-                                                    /** DISMISS THE DIALOG **/
-                                                    dialog.dismiss();
-
-                                                    /** FINISH THE ACTIVITY **/
-                                                    Toast.makeText(getApplicationContext(), "Your account was created successfully", Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent();
-                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                    finish();
-                                                }
-                                            }).show();
-                                } else {
-                                    Toast.makeText(
-                                            getApplicationContext(),
-                                            "There was a problem creating your new account. Please try again by clicking the Save button.",
-                                            Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        });
+                                        /** FINISH THE ACTIVITY **/
+                                        Toast.makeText(getApplicationContext(), "Your account was created successfully", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent();
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        finish();
+                                    }
+                                }).show();
                     }
                 } else {
                     Toast.makeText(

@@ -21,7 +21,7 @@ public class PrivacyPolicyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.privacy_policy);
+        setContentView(R.layout.legal_privacy_policy);
         ButterKnife.bind(this);
     }
 

@@ -21,7 +21,7 @@ public class SellerAgreementActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.seller_agreement);
+        setContentView(R.layout.legal_seller_agreement);
         ButterKnife.bind(this);
     }
 
