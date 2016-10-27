@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardDoctor"
+        style="@style/ZenPetsCards"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/imgvwDoctorProfile"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/beagle" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/imgvwDoctorOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|top"
+                    android:layout_margin="5dp"
+                    android:adjustViewBounds="true"
+                    android:background="#CCDCDCDC"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_more_vert_black_24dp" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/txtDoctorName"
+                    fontPath="fonts/HelveticaNeueLTW1G-MdCn.otf"
+                    android:layout_width="fill_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:ellipsize="end"
+                    android:gravity="start|center"
+                    android:maxLines="1"
+                    android:padding="11dp"
+                    android:text="DOCTOR NAME"
+                    android:textColor="@android:color/primary_text_light"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

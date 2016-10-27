@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dash_home">Dashboard</string>
+    <string name="dash_calendar">Calendar</string>
+    <string name="dash_patients">Patients</string>
+    <string name="dash_reports">Reports</string>
+    <string name="dash_profile">Profile</string>
+    <string name="dash_consult">Consult</string>
+    <string name="dash_tips">Tips</string>
+    <string name="dash_settings">Settings</string>
+    <string name="dash_help">Help</string>
+    <string name="dash_contact">Contact Us</string>
+</resources>

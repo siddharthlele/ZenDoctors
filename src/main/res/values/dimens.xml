@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- PHONE / TABLET-->
+    <bool name="isTablet">false</bool>
+
+    <!-- SPLASH SCREEN -->
+    <dimen name="icon_size">110dp</dimen>
+    <dimen name="login_title_size">47sp</dimen>
+    <dimen name="login_sub_title_size">40sp</dimen>
+
+    <!-- SCROLL BAR SIZE -->
+    <dimen name="scroll_bar_size">5dp</dimen>
+
+    <!-- PROGRESS BAR HEADERS -->
+    <dimen name="pb_pad">2dp</dimen>
+    <dimen name="pb_size">16sp</dimen>
+
+    <!-- EMPTY DETAILS -->
+    <dimen name="empty_margin">10dp</dimen>
+    <dimen name="empty_pad">6dp</dimen>
+    <dimen name="empty_size">18sp</dimen>
+</resources>

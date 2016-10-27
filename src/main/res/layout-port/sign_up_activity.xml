@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/the_toolbar" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbarSize="@dimen/scroll_bar_size"
+        android:scrollbarThumbVertical="@color/primary_dark">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                fontPath="fonts/HelveticaNeueLTW1G-MdCn.otf"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="11dp"
+                android:paddingTop="11dp"
+                android:text="CREATE AN ACCOUNT"
+                android:textColor="@android:color/primary_text_dark"
+                android:textSize="18sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                fontPath="fonts/HelveticaNeueLTW1G-ThCn.otf"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="11dp"
+                android:paddingTop="4dp"
+                android:text="Start using Zen Pet Doctors in a few simple steps"
+                android:textColor="@android:color/secondary_text_dark"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/edtClinicName"
+                fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start|center"
+                android:hint="(*) Clinic Name"
+                android:inputType="textCapWords"
+                android:padding="11dp"
+                android:textColor="@android:color/primary_text_dark"
+                android:textColorHint="@android:color/tertiary_text_dark"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/edtEmailAddress"
+                fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start|center"
+                android:hint="(*) Email address"
+                android:inputType="textEmailAddress"
+                android:padding="11dp"
+                android:text="theskiddhard@gmail.com"
+                android:textColor="@android:color/primary_text_dark"
+                android:textColorHint="@android:color/tertiary_text_dark"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/edtPassword"
+                fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                android:layout_width="fill_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start|center"
+                android:hint="(*) Password (at least 8 characters)"
+                android:inputType="textPassword"
+                android:padding="11dp"
+                android:text="12345678"
+                android:textColor="@android:color/primary_text_dark"
+                android:textColorHint="@android:color/tertiary_text_dark"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/edtConfirmPassword"
+                fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                android:layout_width="fill_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start|center"
+                android:hint="(*) Confirm the Password"
+                android:inputType="textPassword"
+                android:padding="11dp"
+                android:text="12345678"
+                android:textColor="@android:color/primary_text_dark"
+                android:textColorHint="@android:color/tertiary_text_dark"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txtTermsOfService"
+        fontPath="fonts/HelveticaNeueLTW1G-ThCn.otf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="5dp"
+        android:padding="11dp"
+        android:text="By continuing, I agree to the Seller Agreement and Privacy Policy"
+        android:textColor="@android:color/primary_text_dark"
+        android:textColorLink="@android:color/holo_red_dark"
+        android:textSize="15sp" />
+</LinearLayout>

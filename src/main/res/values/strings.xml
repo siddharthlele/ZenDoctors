@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Zen Pets</string>
+    <string name="splash_app_name">Zen Pets</string>
+    <string name="login_app_name">Zen Pets</string>
+    <string name="login_app_name_for_doctors">DOCTORS</string>
+
+    <!-- GOOGLE MAPS API KEY -->
+    <string name="google_maps_key">AIzaSyBUw_vk8k0plUgGg_W27dzpbLW__srTZ80</string>
+
+    <!-- LEGAL STRINGS -->
+    <string name="terms_part_1">By continuing, I agree to the&#160;</string>
+    <string name="terms_part_2">Seller Agreement</string>
+    <string name="terms_part_3">&#160;and the&#160;</string>
+    <string name="terms_part_4">Privacy Policy</string>
+
+    <!-- DASHBOARD OPEN AND CLOSE STRINGS -->
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+</resources>
