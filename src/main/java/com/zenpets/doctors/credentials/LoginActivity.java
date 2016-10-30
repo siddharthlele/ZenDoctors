@@ -1,4 +1,4 @@
-package com.zenpets.doctors;
+package com.zenpets.doctors.credentials;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.zenpets.doctors.R;
 import com.zenpets.doctors.landing.MainLandingActivity;
 
 import butterknife.BindView;

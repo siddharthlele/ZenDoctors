@@ -16,7 +16,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -30,15 +29,18 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.zenpets.doctors.R;
-import com.zenpets.doctors.creators.ClinicCreator;
+import com.zenpets.doctors.creators.ClinicAlbumCreator;
+import com.zenpets.doctors.creators.ClinicCreatorActivity;
 import com.zenpets.doctors.landing.modules.CalendarFrag;
 import com.zenpets.doctors.landing.modules.ConsultFrag;
 import com.zenpets.doctors.landing.modules.DashboardFrag;
 import com.zenpets.doctors.landing.modules.HelpActivity;
 import com.zenpets.doctors.landing.modules.PatientsFrag;
+import com.zenpets.doctors.landing.modules.ProfileFrag;
 import com.zenpets.doctors.landing.modules.ReportsFrag;
 import com.zenpets.doctors.landing.modules.SettingsActivity;
 import com.zenpets.doctors.landing.modules.TipsFrag;
@@ -92,14 +94,6 @@ public class MainLandingActivity extends AppCompatActivity {
 
             /** GET THE USER ID **/
             USER_ID = user.getUid();
-
-            /** GET THE CLINIC NAME **/
-            CLINIC_NAME = user.getDisplayName();
-
-            /** SET THE CLINIC NAME **/
-            if (CLINIC_NAME != null)  {
-                txtClinicName.setText(CLINIC_NAME);
-            }
         }
 
         /** CHECK IF THE CLINIC PROFILE HAS BEEN COMPLETED **/
@@ -116,10 +110,13 @@ public class MainLandingActivity extends AppCompatActivity {
                     } else {
                         for (DataSnapshot child: dataSnapshot.getChildren()) {
                             ClinicsData data = child.getValue(ClinicsData.class);
-                            CLINIC_LOGO = data.getClinicLogo();
-                            Log.e("CONTACT LOGO", CLINIC_LOGO);
 
-                            /** SET THE CLINIC LOGO **/
+                            /** GET THE CLINIC NAME **/
+                            CLINIC_NAME = data.getClinicName();
+                            txtClinicName.setText(CLINIC_NAME);
+
+                            /** GET THE CLINIC LOGO **/
+                            CLINIC_LOGO = data.getClinicLogo();
                             if (CLINIC_LOGO != null)   {
                                 Picasso.with(MainLandingActivity.this)
                                         .load(CLINIC_LOGO)
@@ -128,6 +125,26 @@ public class MainLandingActivity extends AppCompatActivity {
                                         .into(imgvwClinicLogo);
                             }
                         }
+
+                        /** CHECK IF THE CLINIC HAS CREATED AN ALBUM **/
+                        DatabaseReference refAlbum = FirebaseDatabase.getInstance().getReference().child("Clinic Images");
+                        Query query = refAlbum.orderByChild("clinicOwner").equalTo(USER_ID);
+                        query.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                Log.e("ALBUM SIZE", String.valueOf(dataSnapshot.getChildrenCount()));
+                                if (!dataSnapshot.hasChildren()) {
+                                    Toast.makeText(getApplicationContext(), "No images found", Toast.LENGTH_SHORT).show();
+                                    /** SHOW THE ADD CLINIC IMAGES DIALOG **/
+                                    showClinicImagesDialog();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
                     }
                 }
 
@@ -189,6 +206,10 @@ public class MainLandingActivity extends AppCompatActivity {
                         mContent = new ReportsFrag();
                         switchFragment(mContent);
                         return true;
+                    case R.id.dashProfile:
+                        mContent = new ProfileFrag();
+                        switchFragment(mContent);
+                        return true;
                     case R.id.dashConsult:
                         mContent = new ConsultFrag();
                         switchFragment(mContent);
@@ -214,6 +235,7 @@ public class MainLandingActivity extends AppCompatActivity {
     }
 
     /***** CONFIGURE THE TOOLBAR *****/
+    @SuppressWarnings("ConstantConditions")
     private void configToolbar() {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.myToolbar);
@@ -326,13 +348,48 @@ public class MainLandingActivity extends AppCompatActivity {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        Intent intent = new Intent(MainLandingActivity.this, ClinicCreator.class);
+                        Intent intent = new Intent(MainLandingActivity.this, ClinicCreatorActivity.class);
                         startActivityForResult(intent, 101);
                     }
                 })
                 .onNegative(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+    }
+
+    /** SHOW THE ADD CLINIC IMAGES DIALOG **/
+    private void showClinicImagesDialog() {
+        String message = getResources().getString(R.string.clinic_albums_message);
+        new MaterialDialog.Builder(MainLandingActivity.this)
+                .icon(ContextCompat.getDrawable(MainLandingActivity.this, R.drawable.ic_info_outline_black_24dp))
+                .title("Upload Clinic Images?")
+                .cancelable(true)
+                .content(message)
+                .positiveText("Add Now")
+                .negativeText("Later")
+                .neutralText("Don't Remind Me")
+                .theme(Theme.LIGHT)
+                .typeface("HelveticaNeueLTW1G-MdCn.otf", "HelveticaNeueLTW1G-Cn.otf")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        Intent intent = new Intent(MainLandingActivity.this, ClinicAlbumCreator.class);
+                        startActivityForResult(intent, 101);
+                    }
+                })
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                    }
+                })
+                .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        // TODO: ADD A FLAG TO SHARED PREFERENCES
                         dialog.dismiss();
                     }
                 }).show();

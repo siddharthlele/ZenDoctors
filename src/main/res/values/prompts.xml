@@ -7,4 +7,7 @@
 
     <string name="clinic_profile">Now that you have created your new account on Zen Pets, we need some information about your Clinic / Hospital before your profile can be made public and available for all Zen Pets users.
     \n\nTo add the Clinic / Hospital information now, click the \"Add Clinic Details\". You can choose to add the information Later too. However, your Clinic / Hospital listing will remain private.</string>
+
+    <string name="clinic_albums_message">Would you like to add some images of this Clinic?
+    \n\nWhen you add images to your Clinic, they will be displayed to all Zen Pets Users. The images will, often, also help Users choose to visit your Clinic.</string>
 </resources>

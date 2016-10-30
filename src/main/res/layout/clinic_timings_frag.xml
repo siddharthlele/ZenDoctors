@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollTimings"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbarSize="@dimen/scroll_bar_size"
+        android:scrollbarThumbVertical="@color/primary"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|center"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txt247"
+                fontPath="fonts/Exo2-Medium.otf"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:padding="11dp"
+                android:text="27 * 7"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/linlaDetailedTimings"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        fontPath="fonts/fontawesome-webfont.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="6dp"
+                        android:text="@string/clinic_profile_calendar_icon"
+                        android:textColor="@android:color/holo_orange_light"
+                        android:textSize="16sp" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        fontPath="fonts/Exo2-Medium.otf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="6dp"
+                        android:text="DETAILED TIMINGS"
+                        android:textColor="@android:color/primary_text_dark"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    fontPath="fonts/Exo2-Medium.otf"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="11dp"
+                    android:text="SUNDAY"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtSunMorning"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtSunAfternoon"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    fontPath="fonts/Exo2-Medium.otf"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="11dp"
+                    android:text="MONDAY"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtMonMorning"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtMonAfternoon"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    fontPath="fonts/Exo2-Medium.otf"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="11dp"
+                    android:text="TUESDAY"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtTueMorning"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtTueAfternoon"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    fontPath="fonts/Exo2-Medium.otf"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="11dp"
+                    android:text="WEDNESDAY"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtWedMorning"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtWedAfternoon"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    fontPath="fonts/Exo2-Medium.otf"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="11dp"
+                    android:text="THURSDAY"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtThuMorning"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtThuAfternoon"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    fontPath="fonts/Exo2-Medium.otf"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="11dp"
+                    android:text="FRIDAY"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtFriMorning"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtFriAfternoon"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    fontPath="fonts/Exo2-Medium.otf"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="11dp"
+                    android:text="SATURDAY"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtSatMorning"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="MORNING"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtSatAfternoon"
+                            fontPath="fonts/Exo2-Regular.otf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="AFTERNOON"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linlaEmpty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <android.support.v7.widget.AppCompatTextView
+            fontPath="fonts/fontawesome-webfont.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/empty_icon"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="65sp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            fontPath="fonts/Exo2-Thin.otf"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/empty_margin"
+            android:layout_marginRight="@dimen/empty_margin"
+            android:layout_marginTop="@dimen/empty_margin"
+            android:gravity="center"
+            android:padding="@dimen/empty_pad"
+            android:text="You haven't configured your Clinic Timings yet. Tap here to configure your Clinic Timings now."
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="@dimen/empty_size" />
+    </LinearLayout>
+</LinearLayout>

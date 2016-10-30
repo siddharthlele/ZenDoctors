@@ -1,4 +1,4 @@
-package com.zenpets.doctors;
+package com.zenpets.doctors.credentials;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,7 @@ import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.zenpets.doctors.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.zenpets.doctors;
+package com.zenpets.doctors.credentials;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -37,6 +37,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.zenpets.doctors.R;
 import com.zenpets.doctors.legal.PrivacyPolicyActivity;
 import com.zenpets.doctors.legal.SellerAgreementActivity;
 import com.zenpets.doctors.utils.TypefaceSpan;

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linlaHeaderProgress"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/pb_pad" />
+
+        <android.support.v7.widget.AppCompatTextView
+            fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center"
+            android:padding="@dimen/pb_pad"
+            android:text="Loading...."
+            android:textSize="@dimen/pb_size" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="true"
+                tools:ignore="UselessParent">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgvwClinicCircular"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/beagle"
+                        app:civ_border_color="#CCDCDCDC"
+                        app:civ_border_width="5dp" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtClinicName"
+                        fontPath="fonts/HelveticaNeueLTW1G-MdCn.otf"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:padding="11dp"
+                        android:text="Clinic Name"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="29sp" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/fontawesome-webfont.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="@string/clinic_profile_contact_icon"
+                            android:textColor="@android:color/holo_orange_light"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="Contact Person"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtContactPerson"
+                        fontPath="fonts/HelveticaNeueLTW1G-MdCn.otf"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="11dp"
+                        android:text="CONTACT PERSON"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#CCDCDCDC" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/fontawesome-webfont.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="@string/clinic_profile_phone_icon"
+                            android:textColor="@android:color/holo_orange_light"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="Phone Number"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtPhoneNumber"
+                        fontPath="fonts/HelveticaNeueLTW1G-MdCn.otf"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="11dp"
+                        android:text="PHONE NUMBER"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#CCDCDCDC" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/fontawesome-webfont.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="@string/clinic_profile_address_icon"
+                            android:textColor="@android:color/holo_orange_light"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="Address"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtPostalAddress"
+                        fontPath="fonts/HelveticaNeueLTW1G-MdCn.otf"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="11dp"
+                        android:text="ADDRESS"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="20sp" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtCombinedAddress"
+                        fontPath="fonts/HelveticaNeueLTW1G-MdCn.otf"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="11dp"
+                        android:text="SECONDARY ADDRESS"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#CCDCDCDC" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/fontawesome-webfont.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="@string/clinic_profile_charges_icon"
+                            android:textColor="@android:color/holo_orange_light"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="Minimum Charges"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtCharges"
+                        fontPath="fonts/HelveticaNeueLTW1G-MdCn.otf"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="11dp"
+                        android:text="MINIMUM CHARGES"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/fontawesome-webfont.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="@string/clinic_profile_location_icon"
+                            android:textColor="@android:color/holo_orange_light"
+                            android:textSize="16sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="6dp"
+                            android:text="Location"
+                            android:textColor="@android:color/primary_text_dark"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/clinicMap"
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        map:cameraZoom="18"
+                        map:mapType="satellite" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

@@ -18,9 +18,10 @@
 
     <application
         android:name=".utils.AppPrefs"
-        android:allowBackup="false"
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="false"
         android:theme="@style/ZenPets">
         <activity android:name=".SplashScreenActivity">
@@ -31,13 +32,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".credentials.LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".credentials.SignUpActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".credentials.ForgotPasswordActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".landing.MainLandingActivity"
@@ -47,6 +48,25 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".landing.modules.HelpActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- CLINIC -->
+        <activity
+            android:name=".creators.ClinicCreatorActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".utils.helpers.LocationPickerActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".creators.ClinicAlbumCreator"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- DOCTORS -->
+        <activity
+            android:name=".creators.DoctorCreatorActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".doctors.DoctorsActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <!-- LEGAL -->
@@ -60,6 +80,15 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <!-- MULTI IMAGE PICKER -->
+        <activity
+            android:name="com.darsh.multipleimageselect.activities.AlbumSelectActivity"
+            android:theme="@style/MultipleImageSelectTheme">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

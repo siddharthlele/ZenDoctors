@@ -9,7 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -83,8 +83,11 @@ dependencies {
     /** THE GOOGLE MAPS UTILITY **/
     compile 'com.google.maps.android:android-maps-utils:0.4.4'
 
-//    /** JODA TIME LIBRARY **/
-//    compile 'joda-time:joda-time:2.9.4'
+    /** MULTI IMAGE PICKER **/
+    compile 'com.github.darsh2:MultipleImageSelect:v0.0.4'
+
+    /** PERMISSIONS MANAGER **/
+    compile 'com.github.k0shk0sh:PermissionHelper:1.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

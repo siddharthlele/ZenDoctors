@@ -6,4 +6,218 @@
         <item>Mrs.</item>
         <item>Mr.</item>
     </string-array>
+
+    <string-array name="mumbai_localities">
+        <item>4 Bunglows</item>
+        <item>7 Bungalows</item>
+        <item>Airoli</item>
+        <item>Alibaug</item>
+        <item>Andheri Lokhandwala</item>
+        <item>Azad Nagar</item>
+        <item>Bandra East</item>
+        <item>Bandra Kurla Complex</item>
+        <item>Bandra Talao</item>
+        <item>Bandstand</item>
+        <item>Bhandup</item>
+        <item>Bhayandar</item>
+        <item>Borivali East</item>
+        <item>Borivali West</item>
+        <item>Breach Candy</item>
+        <item>Byculla</item>
+        <item>Carter Road</item>
+        <item>Castle Mill</item>
+        <item>CBD-Belapur</item>
+        <item>Chakala</item>
+        <item>Chandivali</item>
+        <item>Charni Road</item>
+        <item>Chembur</item>
+        <item>Chowpatty</item>
+        <item>Churchgate</item>
+        <item>Colaba</item>
+        <item>Cuffe Parade</item>
+        <item>Dadar East</item>
+        <item>Dadar Shivaji Park</item>
+        <item>Dadar West</item>
+        <item>Dahisar East</item>
+        <item>Dahisar West</item>
+        <item>Dombivali East</item>
+        <item>Dombivali West</item>
+        <item>Fort</item>
+        <item>Ghansoli</item>
+        <item>Ghatkopar East</item>
+        <item>Ghatkopar West</item>
+        <item>Ghodbunder Road</item>
+        <item>Girgaum</item>
+        <item>Gorai</item>
+        <item>Goregaon East</item>
+        <item>Goregaon West</item>
+        <item>Grant Road</item>
+        <item>Hill Road</item>
+        <item>Hiranandani Estate</item>
+        <item>Jogeshwari</item>
+        <item>Juhu</item>
+        <item>Kalamboli</item>
+        <item>Kalbadevi</item>
+        <item>Kalwa</item>
+        <item>Kalyan</item>
+        <item>Kamothe</item>
+        <item>Kandivali East</item>
+        <item>Kandivali West</item>
+        <item>Kasarvadavli</item>
+        <item>Kemps Corner</item>
+        <item>Khar</item>
+        <item>Kharghar</item>
+        <item>Khopat</item>
+        <item>Kopar Khairane</item>
+        <item>Kurla</item>
+        <item>Linking Road</item>
+        <item>Lower Parel</item>
+        <item>Mahakali</item>
+        <item>Mahalaxmi</item>
+        <item>Mahim</item>
+        <item>Majiwada</item>
+        <item>Malabar Hill</item>
+        <item>Malad East</item>
+        <item>Malad West</item>
+        <item>Manpada</item>
+        <item>Marine Lines</item>
+        <item>Marol</item>
+        <item>Marve</item>
+        <item>Matunga East</item>
+        <item>Matunga West</item>
+        <item>Mazgaon</item>
+        <item>Mira Road</item>
+        <item>Mohammad Ali Road</item>
+        <item>Mulund East</item>
+        <item>Mulund West</item>
+        <item>Mumbai Central</item>
+        <item>Mumbai CST Area</item>
+        <item>Mumbra</item>
+        <item>Nalasopara</item>
+        <item>Nariman Point</item>
+        <item>Naupada</item>
+        <item>Near Andheri East Station</item>
+        <item>Near Andheri West Station</item>
+        <item>Nerul</item>
+        <item>New Panvel</item>
+        <item>Old Panvel</item>
+        <item>Oshiwara</item>
+        <item>Owale</item>
+        <item>Pali Hill</item>
+        <item>Panch Pakhadi</item>
+        <item>Parel</item>
+        <item>Peddar Road</item>
+        <item>Powai</item>
+        <item>Prabhadevi</item>
+        <item>Sakinaka</item>
+        <item>Sanpada</item>
+        <item>Santacruz East</item>
+        <item>Santacruz West</item>
+        <item>Seawoods</item>
+        <item>Sewri</item>
+        <item>Sion</item>
+        <item>Tardeo</item>
+        <item>Thane East</item>
+        <item>Trombay</item>
+        <item>Turbhe</item>
+        <item>Ulhasnagar</item>
+        <item>Upvan</item>
+        <item>Vasai</item>
+        <item>Vasant Vihar</item>
+        <item>Vashi</item>
+        <item>Veera Desai Area</item>
+        <item>Versova</item>
+        <item>Vikhroli</item>
+        <item>Vile Parle East</item>
+        <item>Vile Parle West</item>
+        <item>Virar</item>
+        <item>Wadala</item>
+        <item>Wagle Estate</item>
+        <item>Worli</item>
+    </string-array>
+
+    <string-array name="pune_localities">
+        <item>Akurdi</item>
+        <item>Aundh</item>
+        <item>B.T. Kawade Road</item>
+        <item>Balewadi</item>
+        <item>Baner</item>
+        <item>Bavdhan</item>
+        <item>Bhosari</item>
+        <item>Bibvewadi</item>
+        <item>Budhwar Peth</item>
+        <item>Bund Garden Road</item>
+        <item>Camp Area</item>
+        <item>Chakan</item>
+        <item>Chandan Nagar</item>
+        <item>Chinchwad</item>
+        <item>Dange Chowk</item>
+        <item>Deccan Gymkhana</item>
+        <item>Dehu Road</item>
+        <item>Dhankawadi</item>
+        <item>Dhanori</item>
+        <item>Dhole Patil Road</item>
+        <item>East Street</item>
+        <item>Erandwane</item>
+        <item>Expressway</item>
+        <item>FC Road</item>
+        <item>Fatima Nagar</item>
+        <item>Hadapsar</item>
+        <item>Hinjawadi</item>
+        <item>JM Road</item>
+        <item>Kalyani Nagar</item>
+        <item>Karve Nagar</item>
+        <item>Katraj</item>
+        <item>Khadakwasla</item>
+        <item>Khadki</item>
+        <item>Khandala</item>
+        <item>Kharadi</item>
+        <item>Kondhwa</item>
+        <item>Koregaon Park</item>
+        <item>Kothrud</item>
+        <item>Lavale</item>
+        <item>Lavasa</item>
+        <item>Law College Road</item>
+        <item>Lohegaon</item>
+        <item>Lonavala</item>
+        <item>MG Road</item>
+        <item>Magarpatta</item>
+        <item>Model Colony</item>
+        <item>Mulshi Road</item>
+        <item>Mundhwa</item>
+        <item>NIBM Road</item>
+        <item>Narhe</item>
+        <item>Nigdi</item>
+        <item>Old Mumbai-Pune Highway</item>
+        <item>Parvati</item>
+        <item>Pashan</item>
+        <item>Pimple Gurav</item>
+        <item>Pimple Nilakh</item>
+        <item>Pimple Saudagar</item>
+        <item>Pimpri</item>
+        <item>Pune-Solapur Road</item>
+        <item>Pune University</item>
+        <item>Rasta Peth</item>
+        <item>Ravet</item>
+        <item>Sadashiv Peth</item>
+        <item>Salunkhe Vihar Road</item>
+        <item>Sassoon Road</item>
+        <item>Satara Road</item>
+        <item>Senapati Bapat Road</item>
+        <item>Shaniwar Peth</item>
+        <item>Shivaji Nagar</item>
+        <item>Shivapur</item>
+        <item>Shukrawar Peth</item>
+        <item>Sinhgad Road</item>
+        <item>Swargate</item>
+        <item>Tilak Road</item>
+        <item>Viman Nagar</item>
+        <item>Vishrantwadi</item>
+        <item>Wadgaon Sheri</item>
+        <item>Wagholi</item>
+        <item>Wakad</item>
+        <item>Wanowrie</item>
+        <item>Warje</item>
+        <item>Yerawada</item>
+    </string-array>
 </resources>
