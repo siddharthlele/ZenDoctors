@@ -238,44 +238,6 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="6dp"
-                            android:text="@string/clinic_profile_charges_icon"
-                            android:textColor="@android:color/holo_orange_light"
-                            android:textSize="16sp" />
-
-                        <android.support.v7.widget.AppCompatTextView
-                            fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:padding="6dp"
-                            android:text="Minimum Charges"
-                            android:textColor="@android:color/primary_text_dark"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/txtCharges"
-                        fontPath="fonts/HelveticaNeueLTW1G-MdCn.otf"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="11dp"
-                        android:text="MINIMUM CHARGES"
-                        android:textColor="@android:color/holo_orange_dark"
-                        android:textSize="20sp" />
-
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <android.support.v7.widget.AppCompatTextView
-                            fontPath="fonts/fontawesome-webfont.ttf"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:padding="6dp"
                             android:text="@string/clinic_profile_location_icon"
                             android:textColor="@android:color/holo_orange_light"
                             android:textSize="16sp" />

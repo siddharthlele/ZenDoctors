@@ -1,5 +1,6 @@
 package com.zenpets.doctors.doctors;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,19 +21,16 @@ import android.widget.TextView;
 import com.zenpets.doctors.R;
 import com.zenpets.doctors.doctors.modules.DoctorDetailsFrag;
 import com.zenpets.doctors.doctors.modules.DoctorExperienceFrag;
-import com.zenpets.doctors.doctors.modules.DoctorQualificationsFrag;
+import com.zenpets.doctors.doctors.modules.DoctorEducationFrag;
 import com.zenpets.doctors.doctors.modules.DoctorServicesFrag;
 import com.zenpets.doctors.doctors.modules.DoctorSpecializationsFrag;
 import com.zenpets.doctors.doctors.modules.DoctorTimingsFrag;
-import com.zenpets.doctors.landing.modules.ProfileFrag;
-import com.zenpets.doctors.landing.profiles.ClinicDetailsFrag;
-import com.zenpets.doctors.landing.profiles.ClinicDoctorsFrag;
-import com.zenpets.doctors.landing.profiles.ClinicImagesFrag;
-import com.zenpets.doctors.landing.profiles.ClinicTimingsFrag;
 import com.zenpets.doctors.utils.TypefaceSpan;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class DoctorsActivity extends AppCompatActivity {
 
@@ -69,10 +67,10 @@ public class DoctorsActivity extends AppCompatActivity {
     /** SETUP THE VIEW PAGER **/
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new DoctorDetailsFrag(), "Clinic");
-        adapter.addFragment(new DoctorQualificationsFrag(), "Qualifications");
+        adapter.addFragment(new DoctorDetailsFrag(), "Doctor");
+        adapter.addFragment(new DoctorEducationFrag(), "Education");
         adapter.addFragment(new DoctorSpecializationsFrag(), "Specializations");
-        adapter.addFragment(new DoctorServicesFrag(), "Service");
+        adapter.addFragment(new DoctorServicesFrag(), "Services");
         adapter.addFragment(new DoctorExperienceFrag(), "Experience");
         adapter.addFragment(new DoctorTimingsFrag(), "Timings");
         viewPager.setAdapter(adapter);
@@ -130,7 +128,7 @@ public class DoctorsActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.myToolbar);
         setSupportActionBar(myToolbar);
 
-        String strTitle = "Add Clinic Images";
+        String strTitle = "Doctor Details";
 //        String strTitle = getString(R.string.add_a_new_pet);
         SpannableString s = new SpannableString(strTitle);
         s.setSpan(new TypefaceSpan(getApplicationContext()), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -140,5 +138,10 @@ public class DoctorsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle(s);
         getSupportActionBar().setSubtitle(null);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

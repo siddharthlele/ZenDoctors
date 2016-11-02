@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
@@ -76,6 +77,8 @@ public class DoctorCreatorActivity extends AppCompatActivity {
     String DOCTOR_NAME = null;
     String DOCTOR_PREFIX = null;
     String DOCTOR_GENDER = "Male";
+    String DOCTOR_EXPERIENCE = null;
+    String DOCTOR_CHARGES = null;
     String DOCTOR_SUMMARY = null;
     Uri DOCTOR_PROFILE_URI = null;
     private String FILE_NAME = null;
@@ -89,9 +92,15 @@ public class DoctorCreatorActivity extends AppCompatActivity {
 
     /** CAST THE LAYOUT ELEMENTS **/
     @BindView(R.id.spnPrefix) AppCompatSpinner spnPrefix;
+    @BindView(R.id.inputDoctorsName) TextInputLayout inputDoctorsName;
     @BindView(R.id.edtDoctorsName) AppCompatEditText edtDoctorsName;
     @BindView(R.id.rgGender) RadioGroup rgGender;
+    @BindView(R.id.inputDoctorsExperience) TextInputLayout inputDoctorsExperience;
+    @BindView(R.id.edtDoctorsExperience) AppCompatEditText edtDoctorsExperience;
+    @BindView(R.id.inputDescription) TextInputLayout inputDescription;
     @BindView(R.id.edtDescription) AppCompatEditText edtDescription;
+    @BindView(R.id.inputDoctorsCharges) TextInputLayout inputDoctorsCharges;
+    @BindView(R.id.edtDoctorsCharges) AppCompatEditText edtDoctorsCharges;
     @BindView(R.id.imgvwDoctorProfile) AppCompatImageView imgvwDoctorProfile;
 
     /** SELECT AN IMAGE OF THE MEDICINE **/
@@ -202,6 +211,8 @@ public class DoctorCreatorActivity extends AppCompatActivity {
                     myRef.child("doctorPrefix").setValue(DOCTOR_PREFIX);
                     myRef.child("doctorName").setValue(DOCTOR_NAME);
                     myRef.child("doctorGender").setValue(DOCTOR_GENDER);
+                    myRef.child("doctorExperience").setValue(DOCTOR_EXPERIENCE);
+                    myRef.child("doctorCharges").setValue(DOCTOR_CHARGES);
                     myRef.child("doctorSummary").setValue(DOCTOR_SUMMARY);
                     myRef.child("doctorProfile").setValue(downloadURL.toString());
 
@@ -227,6 +238,8 @@ public class DoctorCreatorActivity extends AppCompatActivity {
 
         /** COLLECT THE NECESSARY DATA **/
         DOCTOR_NAME = edtDoctorsName.getText().toString().trim();
+        DOCTOR_EXPERIENCE = edtDoctorsExperience.getText().toString().trim();
+        DOCTOR_CHARGES = edtDoctorsCharges.getText().toString().trim();
         DOCTOR_SUMMARY = edtDescription.getText().toString().trim();
 
         /** GENERATE THE FILE NAME **/
@@ -237,9 +250,13 @@ public class DoctorCreatorActivity extends AppCompatActivity {
 
         /** VALIDATE THE DETAILS **/
         if (TextUtils.isEmpty(DOCTOR_NAME)) {
-            edtDoctorsName.setError("");
+            inputDoctorsName.setError("Enter the Doctor's Name");
+        } else if (TextUtils.isEmpty(DOCTOR_EXPERIENCE)) {
+            inputDoctorsExperience.setError("Provide the Doctor's experience in years");
+        } else if (TextUtils.isEmpty(DOCTOR_CHARGES))   {
+            inputDoctorsCharges.setError("Provide the Doctor's minimum visitation charges");
         } else if (TextUtils.isEmpty(DOCTOR_SUMMARY))   {
-            edtDescription.setError("");
+            inputDescription.setError("Provide a brief summary of the Doctor's practice");
         } else if (DOCTOR_PROFILE_URI == null)  {
             Toast.makeText(getApplicationContext(), "Select the Doctor's profile picture", Toast.LENGTH_LONG).show();
         } else {

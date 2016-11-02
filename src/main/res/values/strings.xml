@@ -7,6 +7,9 @@
     <!-- GOOGLE MAPS API KEY -->
     <string name="google_maps_key">AIzaSyDaMpXtgExjGfyt8hHfI99z-bdU5G--dhs</string>
 
+    <!-- A FEW COMMON STRINGS -->
+    <string name="common_loading">Loading....</string>
+
     <!-- LEGAL STRINGS -->
     <string name="terms_part_1">By continuing, I agree to the&#160;</string>
     <string name="terms_part_2">Seller Agreement</string>

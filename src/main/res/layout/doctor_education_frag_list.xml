@@ -21,16 +21,16 @@
             <ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/pb_pad" />
+                android:padding="2dp" />
 
             <android.support.v7.widget.AppCompatTextView
                 fontPath="fonts/RobotoCondensed-Regular.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start|center"
-                android:padding="@dimen/pb_pad"
-                android:text="Loading...."
-                android:textSize="@dimen/pb_size" />
+                android:padding="2dp"
+                android:text="@string/common_loading"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <FrameLayout
@@ -39,7 +39,7 @@
             android:layout_gravity="center">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/listDoctors"
+                android:id="@+id/listDocEducation"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
@@ -60,18 +60,18 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <android.support.v7.widget.AppCompatTextView
-                    fontPath="fonts/fontawesome-webfont.ttf"
+                <com.mikepenz.iconics.view.IconicsImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/empty_icon"
-                    android:textColor="@android:color/holo_red_light"
-                    android:textSize="65sp" />
+                    android:layout_marginBottom="10dp"
+                    android:adjustViewBounds="true"
+                    app:iiv_color="@android:color/holo_red_light"
+                    app:iiv_icon="faw-paw"
+                    app:iiv_size="50dp" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    fontPath="fonts/Exo2-Thin.otf"
+                    fontPath="fonts/Roboto-Thin.ttf"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/empty_margin"
@@ -79,15 +79,15 @@
                     android:layout_marginTop="@dimen/empty_margin"
                     android:gravity="center"
                     android:padding="@dimen/empty_pad"
-                    android:text="You haven't added any Doctor's to your Clinic Yet. Tap here to add one now."
+                    android:text="This Doctor doesn't have any Educational Qualifications added on record. Tap here to add one now."
                     android:textColor="@android:color/secondary_text_dark"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/empty_size" />
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabNewDoctor"
+        android:id="@+id/fabNewEducation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

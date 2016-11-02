@@ -1,12 +1,11 @@
 package com.zenpets.doctors.doctors.modules;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.InputType;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +13,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.Theme;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,14 +22,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.zenpets.doctors.R;
-import com.zenpets.doctors.utils.models.doctors.ServicesData;
-import com.zenpets.doctors.utils.models.doctors.ServicesData;
+import com.zenpets.doctors.creators.doctors.EducationCreatorActivity;
+import com.zenpets.doctors.utils.models.doctors.EducationData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DoctorServicesFrag extends Fragment {
+public class DoctorEducationFrag extends Fragment {
 
     /** A DATABASE REFERENCE AND QUERY INSTANCE **/
     DatabaseReference refDoctors;
@@ -47,23 +43,27 @@ public class DoctorServicesFrag extends Fragment {
 
     /** CAST THE LAYOUT ELEMENTS **/
     @BindView(R.id.linlaHeaderProgress) LinearLayout linlaHeaderProgress;
-    @BindView(R.id.listDocServices) RecyclerView listDocServices;
+    @BindView(R.id.listDocEducation) RecyclerView listDocEducation;
     @BindView(R.id.linlaEmpty) LinearLayout linlaEmpty;
 
-    /** ADD A NEW SERVICE **/
-    @OnClick(R.id.fabNewService) void fabNewService()  {
-        showNewServiceDialog();
+    /** ADD A NEW EDUCATIONAL QUALIFICATION **/
+    @OnClick(R.id.fabNewEducation) void newFabNewEducation()   {
+        Intent intent = new Intent(getActivity(), EducationCreatorActivity.class);
+        intent.putExtra("DOCTOR_ID", DOCTOR_ID);
+        startActivity(intent);
     }
 
-    @OnClick(R.id.linlaEmpty) void newService()  {
-        showNewServiceDialog();
+    @OnClick(R.id.linlaEmpty) void newEducation()   {
+        Intent intent = new Intent(getActivity(), EducationCreatorActivity.class);
+        intent.putExtra("DOCTOR_ID", DOCTOR_ID);
+        startActivity(intent);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         /** CAST THE LAYOUT TO A NEW VIEW INSTANCE **/
-        View view = inflater.inflate(R.layout.doctor_services_frag_list, container, false);
+        View view = inflater.inflate(R.layout.doctor_education_frag_list, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -95,16 +95,21 @@ public class DoctorServicesFrag extends Fragment {
 
     /** GET THE DOCTOR'S LIST OF EDUCATIONAL QUALIFICATIONS **/
     private void getDoctorDetails() {
-        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctor Services");
+        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctor Education");
         qryDoctors = refDoctors.orderByChild("doctorID").equalTo(DOCTOR_ID);
 
         /** SETUP THE FIREBASE RECYCLER ADAPTER **/
-        adapter = new FirebaseRecyclerAdapter<ServicesData, ServicesVH>
-                (ServicesData.class, R.layout.doctor_services_frag_item, ServicesVH.class, qryDoctors) {
+        adapter = new FirebaseRecyclerAdapter<EducationData, EducationVH>
+                (EducationData.class, R.layout.doctor_education_frag_item, EducationVH.class, qryDoctors) {
             @Override
-            protected void populateViewHolder(ServicesVH viewHolder, ServicesData model, int position) {
+            protected void populateViewHolder(EducationVH viewHolder, EducationData model, int position) {
                 if (model != null)  {
-                    viewHolder.txtDoctorService.setText(model.getServiceName());
+                    /** SET THE EDUCATIONAL QUALIFICATION NAME **/
+                    String QUALIFICATION_NAME = model.getQualificationName();
+                    String COLLEGE_NAME = model.getCollegeName();
+                    String QUALIFICATION_YEAR = model.getQualificationYear();
+                    String strFinalText = QUALIFICATION_NAME + " - " + COLLEGE_NAME + ", " + QUALIFICATION_YEAR;
+                    viewHolder.txtDoctorEducation.setText(strFinalText);
                 }
             }
         };
@@ -152,17 +157,17 @@ public class DoctorServicesFrag extends Fragment {
         });
 
         /** SET THE ADAPTER **/
-        listDocServices.setAdapter(adapter);
+        listDocEducation.setAdapter(adapter);
     }
 
-    private static class ServicesVH extends RecyclerView.ViewHolder {
+    private static class EducationVH extends RecyclerView.ViewHolder {
 
-        AppCompatTextView txtDoctorService;
+        final AppCompatTextView txtDoctorEducation;
 
-        public ServicesVH(View itemView) {
+        public EducationVH(View itemView) {
             super(itemView);
 
-            txtDoctorService = (AppCompatTextView) itemView.findViewById(R.id.txtDoctorService);
+            txtDoctorEducation = (AppCompatTextView) itemView.findViewById(R.id.txtDoctorEducation);
         }
     }
 
@@ -188,51 +193,20 @@ public class DoctorServicesFrag extends Fragment {
     private void emptyShowOrHide(DataSnapshot dataSnapshot) {
         if (dataSnapshot.hasChildren()) {
             /** SHOW THE RECYCLER VIEW AND HIDE THE EMPTY LAYOUT **/
-            listDocServices.setVisibility(View.VISIBLE);
+            listDocEducation.setVisibility(View.VISIBLE);
             linlaEmpty.setVisibility(View.GONE);
         } else {
             /** HIDE THE RECYCLER VIEW AND SHOW THE EMPTY LAYOUT **/
-            listDocServices.setVisibility(View.GONE);
+            listDocEducation.setVisibility(View.GONE);
             linlaEmpty.setVisibility(View.VISIBLE);
         }
     }
 
     /** CONFIGURE THE RECYCLER VIEW **/
     private void configRecycler() {
-        listDocServices.setHasFixedSize(true);
+        listDocEducation.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        listDocServices.setLayoutManager(llm);
-    }
-
-    /** SHOW THE NEW SERVICE DIALOG **/
-    private void showNewServiceDialog() {
-        new MaterialDialog.Builder(getActivity())
-                .title("New Service")
-                .content("Add a new service offered by this Doctor. \n\nExample 1: Vaccination / Immunization\nExample 2: Pet Counselling\nExample 3: Pet Grooming")
-                .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS | InputType.TYPE_TEXT_FLAG_MULTI_LINE)
-                .inputRange(5, 200)
-                .theme(Theme.LIGHT)
-                .typeface("HelveticaNeueLTW1G-MdCn.otf", "HelveticaNeueLTW1G-Cn.otf")
-                .positiveText("ADD")
-                .negativeText("Cancel")
-                .input("Add a service....", null, false, new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                        /** ADD THE RECORD TO THE FIREBASE DATABASE **/
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctor Services").push();
-                        reference.child("doctorID").setValue(DOCTOR_ID);
-                        reference.child("serviceName").setValue(input.toString());
-
-                        Toast.makeText(getActivity(), "Added \"" + input.toString() + "\" to this Doctors' record", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .onNegative(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        dialog.dismiss();
-                    }
-                })
-                .show();
+        listDocEducation.setLayoutManager(llm);
     }
 }

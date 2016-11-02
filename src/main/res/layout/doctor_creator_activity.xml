@@ -17,6 +17,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <android.support.v7.widget.AppCompatTextView
@@ -37,10 +38,7 @@
                 fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:gravity="start|center"
                 android:padding="11dp"
@@ -53,54 +51,36 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp" />
+                android:layout_marginTop="5dp" />
 
-            <android.support.v7.widget.AppCompatTextView
-                fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputDoctorsName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
-                android:gravity="start|center"
-                android:padding="11dp"
-                android:text="Enter The Doctor's Name"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp" />
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/edtDoctorsName"
-                fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
                 android:layout_marginBottom="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
-                android:gravity="start|center"
-                android:hint="(*) Doctor's Name"
-                android:inputType="textCapWords"
-                android:padding="11dp"
-                android:text="Siddharth Lele"
-                android:textColor="@android:color/primary_text_dark"
-                android:textColorHint="@android:color/tertiary_text_dark"
-                android:textSize="16sp" />
+                android:layout_marginTop="5dp"
+                android:hint="(*) Enter The Doctor's Name"
+                android:textColorHint="@android:color/tertiary_text_dark">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edtDoctorsName"
+                    fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start|center"
+                    android:inputType="textCapWords"
+                    android:padding="11dp"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:textSize="16sp" />
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatTextView
                 fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:gravity="start|center"
                 android:padding="11dp"
@@ -111,12 +91,7 @@
             <RadioGroup
                 android:id="@+id/rgGender"
                 android:layout_width="fill_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_marginBottom="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
                 android:gravity="start|center"
                 android:orientation="horizontal"
                 android:padding="11dp">
@@ -145,53 +120,83 @@
                     android:textSize="16sp" />
             </RadioGroup>
 
-            <android.support.v7.widget.AppCompatTextView
-                fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputDoctorsExperience"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:gravity="start|center"
-                android:padding="11dp"
-                android:text="Provide A Summary Of Your Practise"
-                android:textColor="@android:color/secondary_text_dark"
-                android:textSize="15sp" />
+                android:hint="(*) Enter The Doctor's In Years"
+                android:textColorHint="@android:color/tertiary_text_dark">
 
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/edtDescription"
-                fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
-                android:layout_width="match_parent"
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edtDoctorsExperience"
+                    fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start|center"
+                    android:inputType="number"
+                    android:padding="11dp"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:textSize="16sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputDoctorsCharges"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
-                android:gravity="top|start"
+                android:layout_marginTop="5dp"
+                android:hint="(*) Minimum Charges"
+                android:textColorHint="@android:color/tertiary_text_dark">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edtDoctorsCharges"
+                    fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start|center"
+                    android:inputType="number"
+                    android:padding="11dp"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:textSize="16sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputDescription"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:hint="(*) Tell us something about the Doctor's Practise"
-                android:inputType="textCapSentences|textMultiLine"
-                android:lines="5"
-                android:maxLines="10"
-                android:minLines="5"
-                android:padding="11dp"
-                android:text="Testing the Doctor profile creator...."
-                android:textColor="@android:color/primary_text_dark"
-                android:textColorHint="@android:color/tertiary_text_dark"
-                android:textSize="16sp" />
+                android:textColorHint="@android:color/tertiary_text_dark">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edtDescription"
+                    fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="top|start"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:lines="5"
+                    android:maxLines="10"
+                    android:minLines="5"
+                    android:padding="11dp"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:textSize="16sp" />
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatTextView
                 fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Choose The Doctor's Profile Picture"
@@ -202,11 +207,7 @@
                 style="@style/ZenPetsCards"
                 android:layout_width="fill_parent"
                 android:layout_height="250dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginTop="5dp"
                 android:padding="5dp">
 

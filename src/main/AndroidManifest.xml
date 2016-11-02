@@ -68,10 +68,18 @@
         <activity
             android:name=".doctors.DoctorsActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".creators.doctors.EducationCreatorActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <!-- LEGAL -->
         <activity android:name=".legal.SellerAgreementActivity" />
         <activity android:name=".legal.PrivacyPolicyActivity" />
+
+        <!-- HELPERS -->
+        <activity
+            android:name=".utils.helpers.TimingsPickerActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <!-- GOOGLE MAPS -->
         <meta-data

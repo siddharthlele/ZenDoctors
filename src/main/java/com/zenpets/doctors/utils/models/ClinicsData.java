@@ -15,13 +15,12 @@ public class ClinicsData {
     private String clinicCurrency;
     private Double clinicLatitude;
     private Double clinicLongitude;
-    private String clinicCharges;
     private String clinicLogo;
 
     public ClinicsData() {
     }
 
-    public ClinicsData(String clinicSubscription, String clinicName, String clinicContactPerson, String clinicPhone, String clinicAddress, String clinicCity, String clinicState, String clinicPinCode, String clinicLandmark, String clinicCountry, String clinicCurrency, Double clinicLatitude, Double clinicLongitude, String clinicCharges, String clinicLogo) {
+    public ClinicsData(String clinicSubscription, String clinicName, String clinicContactPerson, String clinicPhone, String clinicAddress, String clinicCity, String clinicState, String clinicPinCode, String clinicLandmark, String clinicCountry, String clinicCurrency, Double clinicLatitude, Double clinicLongitude, String clinicLogo) {
         this.clinicSubscription = clinicSubscription;
         this.clinicName = clinicName;
         this.clinicContactPerson = clinicContactPerson;
@@ -35,7 +34,6 @@ public class ClinicsData {
         this.clinicCurrency = clinicCurrency;
         this.clinicLatitude = clinicLatitude;
         this.clinicLongitude = clinicLongitude;
-        this.clinicCharges = clinicCharges;
         this.clinicLogo = clinicLogo;
     }
 
@@ -89,10 +87,6 @@ public class ClinicsData {
 
     public Double getClinicLongitude() {
         return clinicLongitude;
-    }
-
-    public String getClinicCharges() {
-        return clinicCharges;
     }
 
     public String getClinicLogo() {

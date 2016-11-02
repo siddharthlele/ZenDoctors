@@ -59,7 +59,6 @@ public class ClinicDetailsFrag extends Fragment {
     String LANDMARK = null;
     String COUNTRY_NAME = null;
     String CURRENCY_SYMBOL = null;
-    String CLINIC_CHARGES = null;
     Double CLINIC_LATITUDE;
     Double CLINIC_LONGITUDE;
 
@@ -71,7 +70,6 @@ public class ClinicDetailsFrag extends Fragment {
     @BindView(R.id.txtPhoneNumber) AppCompatTextView txtPhoneNumber;
     @BindView(R.id.txtPostalAddress) AppCompatTextView txtPostalAddress;
     @BindView(R.id.txtCombinedAddress) AppCompatTextView txtCombinedAddress;
-    @BindView(R.id.txtCharges) AppCompatTextView txtCharges;
 
     /** THE CLINIC MAP VIEW **/
     MapView clinicMap;
@@ -194,12 +192,6 @@ public class ClinicDetailsFrag extends Fragment {
 
                         /* GET THE LONGITUDE */
                         CLINIC_LONGITUDE = data.getClinicLongitude();
-
-                        /* GET THE CLINIC CHARGES*/
-                        CLINIC_CHARGES = data.getClinicCharges();
-                        if (CLINIC_CHARGES != null) {
-                            txtCharges.setText(CURRENCY_SYMBOL + " " + CLINIC_CHARGES);
-                        }
 
                         /* GET THE CLINIC LOCATION */
                         if (CLINIC_LATITUDE != null && CLINIC_LONGITUDE != null)    {

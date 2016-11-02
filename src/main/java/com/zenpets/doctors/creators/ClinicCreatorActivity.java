@@ -98,7 +98,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
     String STATE = null;
     String PIN_CODE = null;
     String LANDMARK = null;
-    String CLINIC_CHARGES = null;
     String COUNTRY_NAME = null;
     String CURRENCY_SYMBOL = null;
     Double CLINIC_LATITUDE;
@@ -135,8 +134,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
     @BindView(R.id.edtPinCode) AppCompatEditText edtPinCode;
     @BindView(R.id.inputLandmark) TextInputLayout inputLandmark;
     @BindView(R.id.edtLandmark) AppCompatEditText edtLandmark;
-    @BindView(R.id.inputCharges) TextInputLayout inputCharges;
-    @BindView(R.id.edtCharges) AppCompatEditText edtCharges;
     @BindView(R.id.txtCountryName) AppCompatTextView txtCountryName;
     @BindView(R.id.txtCurrencySymbol) AppCompatTextView txtCurrencySymbol;
     @BindView(R.id.txtLocation) AppCompatTextView txtLocation;
@@ -267,7 +264,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
                     reference.child("clinicCurrency").setValue(CURRENCY_SYMBOL);
                     reference.child("clinicLatitude").setValue(CLINIC_LATITUDE);
                     reference.child("clinicLongitude").setValue(CLINIC_LONGITUDE);
-                    reference.child("clinicCharges").setValue(CLINIC_CHARGES);
                     reference.child("clinicLogo").setValue(downloadURL.toString());
 
                     /** DISMISS THE DIALOG **/
@@ -300,7 +296,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
         CITY = edtCity.getText().toString().trim();
         PIN_CODE = edtPinCode.getText().toString().trim();
         LANDMARK = edtLandmark.getText().toString().trim();
-        CLINIC_CHARGES = edtCharges.getText().toString().trim();
 
         /** GENERATE THE FILE NAME **/
         if (!TextUtils.isEmpty(CLINIC_NAME) && !TextUtils.isEmpty(USER_ID))    {
@@ -318,7 +313,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
             inputPostalAddress.setErrorEnabled(false);
             inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
-            inputCharges.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(CONTACT_PERSON))   {
             inputContactPerson.setError(getString(R.string.clinic_contact_person_empty));
             inputClinicName.setErrorEnabled(false);
@@ -326,7 +320,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
             inputPostalAddress.setErrorEnabled(false);
             inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
-            inputCharges.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(PHONE_NUMBER)) {
             inputPhone.setError(getString(R.string.clinic_phone_empty));
             inputContactPerson.setErrorEnabled(false);
@@ -334,7 +327,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
             inputPostalAddress.setErrorEnabled(false);
             inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
-            inputCharges.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(POSTAL_ADDRESS))   {
             inputPostalAddress.setError(getString(R.string.clinic_postal_address_empty));
             inputContactPerson.setErrorEnabled(false);
@@ -342,7 +334,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
             inputClinicName.setErrorEnabled(false);
             inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
-            inputCharges.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(CITY)) {
             inputCity.setError(getString(R.string.clinic_city_empty));
             inputContactPerson.setErrorEnabled(false);
@@ -350,22 +341,12 @@ public class ClinicCreatorActivity extends AppCompatActivity {
             inputPostalAddress.setErrorEnabled(false);
             inputClinicName.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
-            inputCharges.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(PIN_CODE)) {
             inputPinCode.setError(getString(R.string.clinic_pin_code_empty));
             inputContactPerson.setErrorEnabled(false);
             inputPhone.setErrorEnabled(false);
             inputPostalAddress.setErrorEnabled(false);
             inputCity.setErrorEnabled(false);
-            inputClinicName.setErrorEnabled(false);
-            inputCharges.setErrorEnabled(false);
-        } else if (TextUtils.isEmpty(CLINIC_CHARGES)) {
-            inputCharges.setError(getString(R.string.clinic_charges_empty));
-            inputContactPerson.setErrorEnabled(false);
-            inputPhone.setErrorEnabled(false);
-            inputPostalAddress.setErrorEnabled(false);
-            inputCity.setErrorEnabled(false);
-            inputPinCode.setErrorEnabled(false);
             inputClinicName.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(COUNTRY_NAME) || TextUtils.isEmpty(CURRENCY_SYMBOL))   {
             Toast.makeText(getApplicationContext(), "Please select the default Country and Currency", Toast.LENGTH_LONG).show();
@@ -380,7 +361,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
             inputPostalAddress.setErrorEnabled(false);
             inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
-            inputCharges.setErrorEnabled(false);
 
             /** CREATE THE CLINIC PROFILE **/
             createClinicProfile();

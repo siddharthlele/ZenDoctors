@@ -7,6 +7,14 @@
         <item>Mr.</item>
     </string-array>
 
+    <string-array name="doctor_education">
+        <item>MVMS</item>
+        <item>M. V. Sc</item>
+        <item>PhD - Veterinary Medicine</item>
+        <item>BVMS (Bachelor of Veterinary Medicine &amp; Science)</item>
+        <item>B.V.Sc &amp; A.H</item>
+    </string-array>
+
     <string-array name="mumbai_localities">
         <item>4 Bunglows</item>
         <item>7 Bungalows</item>

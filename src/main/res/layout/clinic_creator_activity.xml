@@ -219,30 +219,6 @@
                     android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/inputCharges"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:textColorHint="@android:color/tertiary_text_dark">
-
-                <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/edtCharges"
-                    fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
-                    android:layout_width="fill_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="start|center"
-                    android:hint="(*) Minimum Charges"
-                    android:inputType="numberDecimal"
-                    android:padding="11dp"
-                    android:textColor="@android:color/primary_text_dark"
-                    android:textColorHint="@android:color/tertiary_text_dark"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
-
             <FrameLayout
                 android:id="@+id/fralaCountrySelector"
                 android:layout_width="fill_parent"
