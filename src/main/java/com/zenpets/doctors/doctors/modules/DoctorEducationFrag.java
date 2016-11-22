@@ -7,6 +7,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,9 +32,8 @@ import butterknife.OnClick;
 
 public class DoctorEducationFrag extends Fragment {
 
-    /** A DATABASE REFERENCE AND QUERY INSTANCE **/
+    /** A DATABASE REFERENCE INSTANCE **/
     DatabaseReference refDoctors;
-    Query qryDoctors;
 
     /** THE INCOMING DOCTOR ID **/
     String DOCTOR_ID = null;
@@ -95,12 +95,11 @@ public class DoctorEducationFrag extends Fragment {
 
     /** GET THE DOCTOR'S LIST OF EDUCATIONAL QUALIFICATIONS **/
     private void getDoctorDetails() {
-        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctor Education");
-        qryDoctors = refDoctors.orderByChild("doctorID").equalTo(DOCTOR_ID);
+        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctors").child(DOCTOR_ID).child("Education");
 
         /** SETUP THE FIREBASE RECYCLER ADAPTER **/
         adapter = new FirebaseRecyclerAdapter<EducationData, EducationVH>
-                (EducationData.class, R.layout.doctor_education_frag_item, EducationVH.class, qryDoctors) {
+                (EducationData.class, R.layout.doctor_education_frag_item, EducationVH.class, refDoctors) {
             @Override
             protected void populateViewHolder(EducationVH viewHolder, EducationData model, int position) {
                 if (model != null)  {
@@ -114,7 +113,7 @@ public class DoctorEducationFrag extends Fragment {
             }
         };
 
-        qryDoctors.addChildEventListener(new ChildEventListener() {
+        refDoctors.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 /** SHOW OR HIDE THE EMPTY LAYOUT **/
@@ -144,7 +143,7 @@ public class DoctorEducationFrag extends Fragment {
             }
         });
 
-        qryDoctors.addListenerForSingleValueEvent(new ValueEventListener() {
+        refDoctors.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 /** SHOW OR HIDE THE EMPTY LAYOUT **/

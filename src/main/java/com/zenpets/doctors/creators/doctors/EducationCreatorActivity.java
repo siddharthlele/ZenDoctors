@@ -167,8 +167,7 @@ public class EducationCreatorActivity extends AppCompatActivity {
             inputCollege.setError("Please provide the college name");
         } else {
             /** SAVE THE RECORD **/
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctor Education").push();
-            reference.child("doctorID").setValue(DOCTOR_ID);
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctors").child(DOCTOR_ID).child("Education").push();
             reference.child("qualificationName").setValue(DOCTOR_EDUCATION);
             reference.child("collegeName").setValue(COLLEGE_NAME);
             reference.child("qualificationYear").setValue(EDUCATION_YEAR);
@@ -178,6 +177,19 @@ public class EducationCreatorActivity extends AppCompatActivity {
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);
             finish();
+
+            /** SAVE THE RECORD **/
+//            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctor Education").push();
+//            reference.child("doctorID").setValue(DOCTOR_ID);
+//            reference.child("qualificationName").setValue(DOCTOR_EDUCATION);
+//            reference.child("collegeName").setValue(COLLEGE_NAME);
+//            reference.child("qualificationYear").setValue(EDUCATION_YEAR);
+//
+//            /** FINISH THE ACTIVITY **/
+//            Toast.makeText(getApplicationContext(), "Successfully added the Educational Qualification", Toast.LENGTH_SHORT).show();
+//            Intent intent = new Intent();
+//            setResult(RESULT_OK, intent);
+//            finish();
         }
     }
 

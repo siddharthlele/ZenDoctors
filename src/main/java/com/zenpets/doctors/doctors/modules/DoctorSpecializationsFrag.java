@@ -23,10 +23,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.zenpets.doctors.R;
-import com.zenpets.doctors.utils.models.doctors.SpecializationsData;
 import com.zenpets.doctors.utils.models.doctors.SpecializationsData;
 
 import butterknife.BindView;
@@ -35,9 +33,8 @@ import butterknife.OnClick;
 
 public class DoctorSpecializationsFrag extends Fragment {
 
-    /** A DATABASE REFERENCE AND QUERY INSTANCE **/
+    /** A DATABASE REFERENCE INSTANCE **/
     DatabaseReference refDoctors;
-    Query qryDoctors;
 
     /** THE INCOMING DOCTOR ID **/
     String DOCTOR_ID = null;
@@ -95,12 +92,11 @@ public class DoctorSpecializationsFrag extends Fragment {
 
     /** GET THE DOCTOR'S LIST OF EDUCATIONAL QUALIFICATIONS **/
     private void getDoctorDetails() {
-        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctor Specializations");
-        qryDoctors = refDoctors.orderByChild("doctorID").equalTo(DOCTOR_ID);
+        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctors").child(DOCTOR_ID).child("Specializations");
 
         /** SETUP THE FIREBASE RECYCLER ADAPTER **/
         adapter = new FirebaseRecyclerAdapter<SpecializationsData, SpecializationVH>
-                (SpecializationsData.class, R.layout.doctor_specialization_frag_item, SpecializationVH.class, qryDoctors) {
+                (SpecializationsData.class, R.layout.doctor_specialization_frag_item, SpecializationVH.class, refDoctors) {
             @Override
             protected void populateViewHolder(SpecializationVH viewHolder, SpecializationsData model, int position) {
                 if (model != null)  {
@@ -109,7 +105,7 @@ public class DoctorSpecializationsFrag extends Fragment {
             }
         };
 
-        qryDoctors.addChildEventListener(new ChildEventListener() {
+        refDoctors.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 /** SHOW OR HIDE THE EMPTY LAYOUT **/
@@ -139,7 +135,7 @@ public class DoctorSpecializationsFrag extends Fragment {
             }
         });
 
-        qryDoctors.addListenerForSingleValueEvent(new ValueEventListener() {
+        refDoctors.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 /** SHOW OR HIDE THE EMPTY LAYOUT **/
@@ -220,8 +216,7 @@ public class DoctorSpecializationsFrag extends Fragment {
                     @Override
                     public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                         /** ADD THE RECORD TO THE FIREBASE DATABASE **/
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctor Specializations").push();
-                        reference.child("doctorID").setValue(DOCTOR_ID);
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctors").child(DOCTOR_ID).child("Specializations").push();
                         reference.child("specializationName").setValue(input.toString());
 
                         Toast.makeText(getActivity(), "Added \"" + input.toString() + "\" to this Doctors' record", Toast.LENGTH_SHORT).show();

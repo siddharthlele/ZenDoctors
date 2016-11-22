@@ -46,7 +46,6 @@ public class ClinicImagesFrag extends Fragment {
     DatabaseReference refClinic;
     DatabaseReference refAlbums;
     Query qryClinic;
-    Query qryAlbums;
 
     /** THE LOGGED IN USER'S USER ID **/
     String USER_ID = null;
@@ -123,9 +122,8 @@ public class ClinicImagesFrag extends Fragment {
                             CLINIC_NAME = data.getClinicName();
 
                             /** CHECK IF THE CLINIC HAS IMAGES ON RECORD **/
-                            refAlbums = FirebaseDatabase.getInstance().getReference().child("Clinic Images");
-                            qryAlbums = refAlbums.orderByChild("clinicOwner").equalTo(USER_ID);
-                            qryAlbums.addValueEventListener(new ValueEventListener() {
+                            refAlbums = FirebaseDatabase.getInstance().getReference().child("Clinics").child(CLINIC_ID).child("Images");
+                            refAlbums.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.hasChildren() && dataSnapshot.getChildrenCount() > 0)  {
@@ -172,7 +170,7 @@ public class ClinicImagesFrag extends Fragment {
     private void setupFirebaseAdapter() {
 
         adapter = new FirebaseRecyclerAdapter<ClinicAlbumsData, ClinicAlbumsVH>
-                (ClinicAlbumsData.class, R.layout.clinic_images_frag_item, ClinicAlbumsVH.class, qryAlbums) {
+                (ClinicAlbumsData.class, R.layout.clinic_images_frag_item, ClinicAlbumsVH.class, refAlbums) {
 
             @Override
             protected void populateViewHolder(ClinicAlbumsVH viewHolder, final ClinicAlbumsData model, final int position) {
@@ -189,7 +187,7 @@ public class ClinicImagesFrag extends Fragment {
             }
         };
 
-        qryAlbums.addChildEventListener(new ChildEventListener() {
+        refAlbums.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 /** SHOW OR HIDE THE EMPTY LAYOUT **/
@@ -219,7 +217,7 @@ public class ClinicImagesFrag extends Fragment {
             }
         });
 
-        qryAlbums.addListenerForSingleValueEvent(new ValueEventListener() {
+        refAlbums.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 /** SHOW OR HIDE THE EMPTY LAYOUT **/

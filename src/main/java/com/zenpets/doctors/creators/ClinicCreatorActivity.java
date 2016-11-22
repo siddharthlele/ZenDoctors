@@ -26,7 +26,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -41,19 +40,26 @@ import com.afollestad.materialdialogs.Theme;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.zenpets.doctors.R;
 import com.zenpets.doctors.utils.TypefaceSpan;
+import com.zenpets.doctors.utils.adapters.CitiesAdapter;
 import com.zenpets.doctors.utils.adapters.CountriesAdapter;
+import com.zenpets.doctors.utils.adapters.LocalitiesAdapter;
 import com.zenpets.doctors.utils.adapters.StatesAdapter;
 import com.zenpets.doctors.utils.helpers.CountryArrayCreator;
 import com.zenpets.doctors.utils.helpers.LocationPickerActivity;
 import com.zenpets.doctors.utils.helpers.StatesArrayCreator;
+import com.zenpets.doctors.utils.models.CitiesData;
 import com.zenpets.doctors.utils.models.CountryData;
+import com.zenpets.doctors.utils.models.LocalitiesData;
 import com.zenpets.doctors.utils.models.StatesData;
 
 import java.io.File;
@@ -95,6 +101,7 @@ public class ClinicCreatorActivity extends AppCompatActivity {
     String PHONE_NUMBER = null;
     String POSTAL_ADDRESS = null;
     String CITY = null;
+    String LOCALITY = null;
     String STATE = null;
     String PIN_CODE = null;
     String LANDMARK = null;
@@ -109,10 +116,18 @@ public class ClinicCreatorActivity extends AppCompatActivity {
     ArrayList<CountryData> arrCountries = new ArrayList<>();
     CountryArrayCreator countryCreator;
 
-    /** COUNTRY ARRAY LIST, ADAPTER AND HELPER **/
+    /** STATE ARRAY LIST, ADAPTER AND HELPER **/
     ArrayList<StatesData> arrStates = new ArrayList<>();
     StatesArrayCreator stateCreator;
-    StatesAdapter adapter;
+    StatesAdapter adapStates;
+
+    /** CITIES ADAPTER AND ARRAY LIST **/
+    CitiesAdapter adapCities;
+    ArrayList<CitiesData> arrCities = new ArrayList<>();
+
+    /** THE LOCALITIES ADAPTER AND ARRAY LIST **/
+    LocalitiesAdapter adapLocalities;
+    ArrayList<LocalitiesData> arrLocalities = new ArrayList<>();
 
     /** THE URI'S **/
     Uri imageUri;
@@ -127,8 +142,8 @@ public class ClinicCreatorActivity extends AppCompatActivity {
     @BindView(R.id.edtPhone) AppCompatEditText edtPhone;
     @BindView(R.id.inputPostalAddress) TextInputLayout inputPostalAddress;
     @BindView(R.id.edtPostalAddress) AppCompatEditText edtPostalAddress;
-    @BindView(R.id.inputCity) TextInputLayout inputCity;
-    @BindView(R.id.edtCity) AppCompatEditText edtCity;
+    @BindView(R.id.spnLocalities) AppCompatSpinner spnLocalities;
+    @BindView(R.id.spnCity) AppCompatSpinner spnCity;
     @BindView(R.id.spnState) AppCompatSpinner spnState;
     @BindView(R.id.inputPinCode) TextInputLayout inputPinCode;
     @BindView(R.id.edtPinCode) AppCompatEditText edtPinCode;
@@ -214,16 +229,27 @@ public class ClinicCreatorActivity extends AppCompatActivity {
         /** GET THE LIST OF COUNTRIES **/
         countryCreator = new CountryArrayCreator(ClinicCreatorActivity.this);
         arrCountries = countryCreator.generateCountryArray();
-        Log.e("COUNTRIES SIZE", String.valueOf(arrCountries.size()));
 
         /** INSTANTIATE THE STATES ADAPTER **/
-        adapter = new StatesAdapter(ClinicCreatorActivity.this, arrStates);
+        adapStates = new StatesAdapter(ClinicCreatorActivity.this, arrStates);
+
+        /** INSTANTIATE THE CITIES ADAPTER **/
+        adapCities = new CitiesAdapter(this, arrCities);
+
+        /** INSTANTIATE THE LOCALITIES ADAPTER **/
+        adapLocalities = new LocalitiesAdapter(this, arrLocalities);
 
         /** SET THE ADAPTER TO THE SPINNER **/
-        spnState.setAdapter(adapter);
+        spnState.setAdapter(adapStates);
 
         /** SELECT THE STATE **/
         spnState.setOnItemSelectedListener(selectState);
+
+        /** SELECT THE CITY **/
+        spnCity.setOnItemSelectedListener(selectCity);
+
+        /** SELECT THE LOCALITIES **/
+        spnLocalities.setOnItemSelectedListener(selectLocality);
 
         /***** CONFIGURE THE ACTIONBAR *****/
         configAB();
@@ -258,6 +284,7 @@ public class ClinicCreatorActivity extends AppCompatActivity {
                     reference.child("clinicAddress").setValue(POSTAL_ADDRESS);
                     reference.child("clinicCity").setValue(CITY);
                     reference.child("clinicState").setValue(STATE);
+                    reference.child("clinicLocality").setValue(LOCALITY);
                     reference.child("clinicPinCode").setValue(PIN_CODE);
                     reference.child("clinicLandmark").setValue(LANDMARK);
                     reference.child("clinicCountry").setValue(COUNTRY_NAME);
@@ -293,14 +320,12 @@ public class ClinicCreatorActivity extends AppCompatActivity {
         CONTACT_PERSON = edtContactPerson.getText().toString().trim();
         PHONE_NUMBER = edtPhone.getText().toString().trim();
         POSTAL_ADDRESS = edtPostalAddress.getText().toString().trim();
-        CITY = edtCity.getText().toString().trim();
         PIN_CODE = edtPinCode.getText().toString().trim();
         LANDMARK = edtLandmark.getText().toString().trim();
 
         /** GENERATE THE FILE NAME **/
         if (!TextUtils.isEmpty(CLINIC_NAME) && !TextUtils.isEmpty(USER_ID))    {
             FILE_NAME = CLINIC_NAME.replaceAll(" ", "_").toLowerCase().trim() + "_" + USER_ID;
-            Log.e("FILE NAME", FILE_NAME);
         } else {
             FILE_NAME = null;
         }
@@ -311,31 +336,26 @@ public class ClinicCreatorActivity extends AppCompatActivity {
             inputContactPerson.setErrorEnabled(false);
             inputPhone.setErrorEnabled(false);
             inputPostalAddress.setErrorEnabled(false);
-            inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(CONTACT_PERSON))   {
             inputContactPerson.setError(getString(R.string.clinic_contact_person_empty));
             inputClinicName.setErrorEnabled(false);
             inputPhone.setErrorEnabled(false);
             inputPostalAddress.setErrorEnabled(false);
-            inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(PHONE_NUMBER)) {
             inputPhone.setError(getString(R.string.clinic_phone_empty));
             inputContactPerson.setErrorEnabled(false);
             inputClinicName.setErrorEnabled(false);
             inputPostalAddress.setErrorEnabled(false);
-            inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(POSTAL_ADDRESS))   {
             inputPostalAddress.setError(getString(R.string.clinic_postal_address_empty));
             inputContactPerson.setErrorEnabled(false);
             inputPhone.setErrorEnabled(false);
             inputClinicName.setErrorEnabled(false);
-            inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(CITY)) {
-            inputCity.setError(getString(R.string.clinic_city_empty));
             inputContactPerson.setErrorEnabled(false);
             inputPhone.setErrorEnabled(false);
             inputPostalAddress.setErrorEnabled(false);
@@ -346,7 +366,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
             inputContactPerson.setErrorEnabled(false);
             inputPhone.setErrorEnabled(false);
             inputPostalAddress.setErrorEnabled(false);
-            inputCity.setErrorEnabled(false);
             inputClinicName.setErrorEnabled(false);
         } else if (TextUtils.isEmpty(COUNTRY_NAME) || TextUtils.isEmpty(CURRENCY_SYMBOL))   {
             Toast.makeText(getApplicationContext(), "Please select the default Country and Currency", Toast.LENGTH_LONG).show();
@@ -359,7 +378,6 @@ public class ClinicCreatorActivity extends AppCompatActivity {
             inputContactPerson.setErrorEnabled(false);
             inputPhone.setErrorEnabled(false);
             inputPostalAddress.setErrorEnabled(false);
-            inputCity.setErrorEnabled(false);
             inputPinCode.setErrorEnabled(false);
 
             /** CREATE THE CLINIC PROFILE **/
@@ -550,12 +568,98 @@ public class ClinicCreatorActivity extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             STATE = arrStates.get(position).getStateName();
+
+            /** CLEAR THE CITIES ARRAY LIST **/
+            arrCities.clear();
+
+            /** FETCH THE LIST OF CITIES **/
+            DatabaseReference refCities = FirebaseDatabase.getInstance().getReference().child("States").child(STATE);
+            refCities.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    getCitiesSpinner(dataSnapshot);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
         }
     };
+
+    /** POPULATE THE CITIES SPINNER **/
+    private void getCitiesSpinner(DataSnapshot dataSnapshot) {
+        CitiesData data;
+        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+            data = new CitiesData();
+            String cityID = postSnapshot.getKey();
+            String cityName = postSnapshot.child("cityName").getValue(String.class);
+            data.setCityID(cityID);
+            data.setCityName(cityName);
+            arrCities.add(data);
+        }
+
+        /** SET THE BREEDS ADAPTER TO THE BREEDS SPINNER **/
+        spnCity.setAdapter(new CitiesAdapter(this, arrCities));
+    }
+
+    /** SELECT THE CITY **/
+    private final AdapterView.OnItemSelectedListener selectCity = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            String CITY_ID = arrCities.get(position).getCityID();
+            CITY = arrCities.get(position).getCityName();
+
+            /** CLEAR THE LOCALITIES ARRAY LIST **/
+            arrLocalities.clear();
+
+            /** FETCH THE LIST OF LOCALITIES **/
+            DatabaseReference refLocalities = FirebaseDatabase.getInstance().getReference().child("States").child(STATE).child(CITY_ID).child("Localities");
+            refLocalities.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    getLocalitiesSpinner(dataSnapshot);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    };
+
+    /** SELECT THE LOCALITY **/
+    private final AdapterView.OnItemSelectedListener selectLocality = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            LOCALITY = arrLocalities.get(position).getLocalityName();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
+    };
+
+    private void getLocalitiesSpinner(DataSnapshot dataSnapshot) {
+        LocalitiesData data;
+        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+            data = new LocalitiesData();
+            String localityName = postSnapshot.getValue(String.class);
+            data.setLocalityName(localityName);
+            arrLocalities.add(data);
+        }
+
+        /** SET THE LOCALITIES ADAPTER TO THE LOCALITIES AUTO COMPLETE TEXT **/
+        spnLocalities.setAdapter(adapLocalities);
+    }
 
     @Override
     protected void attachBaseContext(Context newBase) {

@@ -58,33 +58,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <android.support.v7.widget.AppCompatTextView
-                        fontPath="fonts/fontawesome-webfont.ttf"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="6dp"
-                        android:text="@string/clinic_profile_calendar_icon"
-                        android:textColor="@android:color/holo_orange_light"
-                        android:textSize="16sp" />
-
-                    <android.support.v7.widget.AppCompatTextView
-                        fontPath="fonts/HelveticaNeueLTW1G-Cn.otf"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="6dp"
-                        android:text="DOCTOR TIMINGS"
-                        android:textColor="@android:color/primary_text_dark"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
                 <android.support.v7.widget.AppCompatTextView
                     fontPath="fonts/HelveticaNeueLTW1G-LtCn.otf"
                     android:layout_width="fill_parent"

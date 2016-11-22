@@ -85,7 +85,6 @@ public class ProfileFrag extends Fragment {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFragment(new ClinicDetailsFrag(), "Clinic");
         adapter.addFragment(new ClinicDoctorsFrag(), "Doctors");
-        adapter.addFragment(new ClinicTimingsFrag(), "Timings");
         adapter.addFragment(new ClinicImagesFrag(), "Images");
         viewPager.setAdapter(adapter);
     }

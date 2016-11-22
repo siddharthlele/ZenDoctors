@@ -17,7 +17,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.zenpets.doctors.R;
 import com.zenpets.doctors.utils.helpers.TimingsPickerActivity;
@@ -29,9 +28,8 @@ import butterknife.OnClick;
 
 public class DoctorTimingsFrag extends Fragment {
 
-    /** A DATABASE REFERENCE AND QUERY INSTANCE **/
+    /** A DATABASE REFERENCE INSTANCE **/
     DatabaseReference refDoctors;
-    Query qryDoctors;
 
     /** THE INCOMING DOCTOR ID **/
     String DOCTOR_ID = null;
@@ -124,9 +122,8 @@ public class DoctorTimingsFrag extends Fragment {
 
     /** GET THE DOCTOR'S TIMINGS **/
     private void getDoctorDetails() {
-        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctor Timings");
-        qryDoctors = refDoctors.orderByChild("doctorID").equalTo(DOCTOR_ID);
-        qryDoctors.addValueEventListener(new ValueEventListener() {
+        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctors").child(DOCTOR_ID).child("Timings");
+        refDoctors.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 /** SHOW OR HIDE THE EMPTY LAYOUT **/

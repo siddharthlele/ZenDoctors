@@ -64,7 +64,6 @@ public class ClinicAlbumCreator extends AppCompatActivity {
     DatabaseReference refClinic;
     DatabaseReference refAlbums;
     Query qryClinic;
-    Query qryAlbums;
 
     /** THE FIREBASE STORAGE REFERENCE **/
     StorageReference storageReference;
@@ -153,9 +152,7 @@ public class ClinicAlbumCreator extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Uri downloadURL = taskSnapshot.getDownloadUrl();
                         if (downloadURL != null) {
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Clinic Images").push();
-                            reference.child("clinicOwner").setValue(USER_ID);
-                            reference.child("clinicID").setValue(CLINIC_ID);
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Clinics").child(CLINIC_ID).child("Images").push();
                             reference.child("clinicImage").setValue(downloadURL.toString());
                         }
                     }
@@ -164,10 +161,10 @@ public class ClinicAlbumCreator extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
 
-        /** DISMISS THE DIALOG **/
-        dialog.dismiss();
+            /** DISMISS THE DIALOG **/
+            dialog.dismiss();
+        }
 
         /** FINISH THE ACTIVITY **/
         Toast.makeText(getApplicationContext(), "Successfully added your Clinic's Images", Toast.LENGTH_SHORT).show();
@@ -237,6 +234,42 @@ public class ClinicAlbumCreator extends AppCompatActivity {
                             ClinicsData data = child.getValue(ClinicsData.class);
                             CLINIC_ID = child.getKey();
                             CLINIC_NAME = data.getClinicName();
+
+                            /** CHECK IF THE CLINIC HAS IMAGES ON RECORD **/
+                            refAlbums = FirebaseDatabase.getInstance().getReference().child("Clinics").child(CLINIC_ID).child("Images");
+                            refAlbums.addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                }
+
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                                }
+
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
+                                }
+
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                }
+                            });
+
+                            refAlbums.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    /** SHOW OR HIDE THE EMPTY LAYOUT **/
+                                    emptyShowOrHide(dataSnapshot);
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                }
+                            });
                         }
                     }
                 }
@@ -244,49 +277,6 @@ public class ClinicAlbumCreator extends AppCompatActivity {
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
-
-            /** CHECK IF THE CLINIC HAS IMAGES ON RECORD **/
-            refAlbums = FirebaseDatabase.getInstance().getReference().child("Clinic Images");
-            qryAlbums = refAlbums.orderByChild("clinicOwner").equalTo(USER_ID);
-
-            qryAlbums.addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-            qryAlbums.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    /** SHOW OR HIDE THE EMPTY LAYOUT **/
-                    emptyShowOrHide(dataSnapshot);
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
                 }
             });
         }

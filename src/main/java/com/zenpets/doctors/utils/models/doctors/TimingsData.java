@@ -1,7 +1,6 @@
 package com.zenpets.doctors.utils.models.doctors;
 
 public class TimingsData {
-    private String doctorID;
     private String sunMorFrom;
     private String sunMorTo;
     private String sunAftFrom;
@@ -33,8 +32,7 @@ public class TimingsData {
 
     public TimingsData() {}
 
-    public TimingsData(String doctorID, String sunMorFrom, String sunMorTo, String sunAftFrom, String sunAftTo, String monMorFrom, String monMorTo, String monAftFrom, String monAftTo, String tueMorFrom, String tueMorTo, String tueAftFrom, String tueAftTo, String wedMorFrom, String wedMorTo, String wedAftFrom, String wedAftTo, String thuMorFrom, String thuMorTo, String thuAftFrom, String thuAftTo, String friMorFrom, String friMorTo, String friAftFrom, String friAftTo, String satMorFrom, String satMorTo, String satAftFrom, String satAftTo) {
-        this.doctorID = doctorID;
+    public TimingsData(String sunMorFrom, String sunMorTo, String sunAftFrom, String sunAftTo, String monMorFrom, String monMorTo, String monAftFrom, String monAftTo, String tueMorFrom, String tueMorTo, String tueAftFrom, String tueAftTo, String wedMorFrom, String wedMorTo, String wedAftFrom, String wedAftTo, String thuMorFrom, String thuMorTo, String thuAftFrom, String thuAftTo, String friMorFrom, String friMorTo, String friAftFrom, String friAftTo, String satMorFrom, String satMorTo, String satAftFrom, String satAftTo) {
         this.sunMorFrom = sunMorFrom;
         this.sunMorTo = sunMorTo;
         this.sunAftFrom = sunAftFrom;
@@ -63,10 +61,6 @@ public class TimingsData {
         this.satMorTo = satMorTo;
         this.satAftFrom = satAftFrom;
         this.satAftTo = satAftTo;
-    }
-
-    public String getDoctorID() {
-        return doctorID;
     }
 
     public String getSunMorFrom() {

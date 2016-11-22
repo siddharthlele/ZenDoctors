@@ -61,8 +61,9 @@ public class MainLandingActivity extends AppCompatActivity {
     private AppCompatTextView txtClinicName;
 
     /** PROFILE DETAILS **/
-    private String CLINIC_NAME;
-    private String CLINIC_LOGO;
+    String CLINIC_ID = null;
+    private String CLINIC_NAME = null;
+    private String CLINIC_LOGO = null;
 
     /** DECLARE THE LAYOUT ELEMENTS **/
     private NavigationView navigationView;
@@ -111,6 +112,9 @@ public class MainLandingActivity extends AppCompatActivity {
                         for (DataSnapshot child: dataSnapshot.getChildren()) {
                             ClinicsData data = child.getValue(ClinicsData.class);
 
+                            /** GET THE CLINIC ID **/
+                            CLINIC_ID = child.getKey();
+
                             /** GET THE CLINIC NAME **/
                             CLINIC_NAME = data.getClinicName();
                             txtClinicName.setText(CLINIC_NAME);
@@ -127,9 +131,8 @@ public class MainLandingActivity extends AppCompatActivity {
                         }
 
                         /** CHECK IF THE CLINIC HAS CREATED AN ALBUM **/
-                        DatabaseReference refAlbum = FirebaseDatabase.getInstance().getReference().child("Clinic Images");
-                        Query query = refAlbum.orderByChild("clinicOwner").equalTo(USER_ID);
-                        query.addValueEventListener(new ValueEventListener() {
+                        DatabaseReference refAlbum = FirebaseDatabase.getInstance().getReference().child("Clinics").child(CLINIC_ID).child("Images");
+                        refAlbum.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
 //                                Log.e("ALBUM SIZE", String.valueOf(dataSnapshot.getChildrenCount()));

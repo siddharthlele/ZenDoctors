@@ -23,7 +23,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.zenpets.doctors.R;
 import com.zenpets.doctors.utils.models.doctors.ExperiencesData;
@@ -34,9 +33,8 @@ import butterknife.OnClick;
 
 public class DoctorExperienceFrag extends Fragment {
 
-    /** A DATABASE REFERENCE AND QUERY INSTANCE **/
+    /** A DATABASE REFERENCE INSTANCE **/
     DatabaseReference refDoctors;
-    Query qryDoctors;
 
     /** THE INCOMING DOCTOR ID **/
     String DOCTOR_ID = null;
@@ -94,12 +92,11 @@ public class DoctorExperienceFrag extends Fragment {
 
     /** GET THE DOCTOR'S LIST OF EDUCATIONAL QUALIFICATIONS **/
     private void getDoctorDetails() {
-        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctor Experiences");
-        qryDoctors = refDoctors.orderByChild("doctorID").equalTo(DOCTOR_ID);
+        refDoctors = FirebaseDatabase.getInstance().getReference().child("Doctors").child(DOCTOR_ID).child("Experiences");
 
         /** SETUP THE FIREBASE RECYCLER ADAPTER **/
         adapter = new FirebaseRecyclerAdapter<ExperiencesData, ExperiencesVH>
-                (ExperiencesData.class, R.layout.doctor_experiences_frag_item, ExperiencesVH.class, qryDoctors) {
+                (ExperiencesData.class, R.layout.doctor_experiences_frag_item, ExperiencesVH.class, refDoctors) {
             @Override
             protected void populateViewHolder(ExperiencesVH viewHolder, ExperiencesData model, int position) {
                 if (model != null)  {
@@ -108,7 +105,7 @@ public class DoctorExperienceFrag extends Fragment {
             }
         };
 
-        qryDoctors.addChildEventListener(new ChildEventListener() {
+        refDoctors.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 /** SHOW OR HIDE THE EMPTY LAYOUT **/
@@ -138,7 +135,7 @@ public class DoctorExperienceFrag extends Fragment {
             }
         });
 
-        qryDoctors.addListenerForSingleValueEvent(new ValueEventListener() {
+        refDoctors.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 /** SHOW OR HIDE THE EMPTY LAYOUT **/
@@ -219,8 +216,7 @@ public class DoctorExperienceFrag extends Fragment {
                     @Override
                     public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                         /** ADD THE RECORD TO THE FIREBASE DATABASE **/
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctor Experiences").push();
-                        reference.child("doctorID").setValue(DOCTOR_ID);
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctors").child(DOCTOR_ID).child("Experiences").push();
                         reference.child("experienceTitle").setValue(input.toString());
 
                         Toast.makeText(getActivity(), "Added \"" + input.toString() + "\" to this Doctors' record", Toast.LENGTH_SHORT).show();

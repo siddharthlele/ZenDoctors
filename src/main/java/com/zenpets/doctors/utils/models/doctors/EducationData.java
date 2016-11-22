@@ -2,7 +2,6 @@ package com.zenpets.doctors.utils.models.doctors;
 
 public class EducationData {
 
-    private String doctorID;
     private String qualificationName;
     private String collegeName;
     private String qualificationYear;
@@ -10,15 +9,10 @@ public class EducationData {
     public EducationData() {
     }
 
-    public EducationData(String doctorID, String qualificationName, String collegeName, String qualificationYear) {
-        this.doctorID = doctorID;
+    public EducationData(String qualificationName, String collegeName, String qualificationYear) {
         this.qualificationName = qualificationName;
         this.collegeName = collegeName;
         this.qualificationYear = qualificationYear;
-    }
-
-    public String getDoctorID() {
-        return doctorID;
     }
 
     public String getQualificationName() {

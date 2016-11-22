@@ -408,7 +408,7 @@ public class TimingsPickerActivity extends AppCompatActivity {
                 }
 
                 /** STORE THE TIMINGS IN THE DATABASE **/
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctor Timings").push();
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Doctors").child(DOCTOR_ID).child("Timings").push();
                 reference.child("doctorID").setValue(DOCTOR_ID);
                 reference.child("sunMorFrom").setValue(SUN_MOR_FROM);
                 reference.child("sunMorTo").setValue(SUN_MOR_TO);

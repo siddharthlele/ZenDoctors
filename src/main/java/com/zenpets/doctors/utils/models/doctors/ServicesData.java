@@ -2,19 +2,13 @@ package com.zenpets.doctors.utils.models.doctors;
 
 public class ServicesData {
 
-    private String doctorID;
     private String serviceName;
 
     public ServicesData() {
     }
 
-    public ServicesData(String doctorID, String serviceName) {
-        this.doctorID = doctorID;
+    public ServicesData(String serviceName) {
         this.serviceName = serviceName;
-    }
-
-    public String getDoctorID() {
-        return doctorID;
     }
 
     public String getServiceName() {
