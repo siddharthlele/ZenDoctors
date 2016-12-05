@@ -21,7 +21,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -245,7 +244,7 @@ public class DoctorCreatorActivity extends AppCompatActivity {
         /** GENERATE THE FILE NAME **/
         if (!TextUtils.isEmpty(DOCTOR_NAME) && !TextUtils.isEmpty(CLINIC_NAME))    {
             FILE_NAME = DOCTOR_NAME.replaceAll(" ", "_").toLowerCase().trim() + "_" + CLINIC_NAME.replaceAll(" ", "_");
-            Log.e("FILE NAME", FILE_NAME);
+//            Log.e("FILE NAME", FILE_NAME);
         }
 
         /** VALIDATE THE DETAILS **/

@@ -81,6 +81,14 @@
             android:name=".utils.helpers.TimingsPickerActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <!-- CONSULTATIONS -->
+        <activity
+            android:name=".consultations.ConsultationDetailsActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".consultations.ConsultationAnswerActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <!-- GOOGLE MAPS -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"

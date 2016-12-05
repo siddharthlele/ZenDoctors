@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,7 +130,7 @@ public class DoctorTimingsFrag extends Fragment {
 
                 if (dataSnapshot.hasChildren()) {
                     for (DataSnapshot child : dataSnapshot.getChildren()) {
-                        Log.e("DATA", String.valueOf(dataSnapshot));
+//                        Log.e("DATA", String.valueOf(dataSnapshot));
                         TimingsData data = child.getValue(TimingsData.class);
 
                         /** GET THE SUNDAY TIMINGS **/

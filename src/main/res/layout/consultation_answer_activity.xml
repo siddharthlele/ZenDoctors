@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/the_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    fontPath="fonts/Exo2-Regular.otf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="11dp"
+                    android:text="Answer"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edtAnswer"
+                    fontPath="fonts/Exo2-Regular.otf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="top|start"
+                    android:hint="Description (min 100 chars)"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:lines="8"
+                    android:maxLines="15"
+                    android:minLines="8"
+                    android:padding="11dp"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:textColorHint="@android:color/tertiary_text_dark"
+                    android:textSize="16sp" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    fontPath="fonts/Exo2-Regular.otf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="11dp"
+                    android:text="Suggest / Recommend Next Steps"
+                    android:textColor="@android:color/secondary_text_dark"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edtNextSteps"
+                    fontPath="fonts/Exo2-Regular.otf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="top|start"
+                    android:hint="Description (min 100 chars)"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:lines="8"
+                    android:maxLines="15"
+                    android:minLines="8"
+                    android:padding="11dp"
+                    android:textColor="@android:color/primary_text_dark"
+                    android:textColorHint="@android:color/tertiary_text_dark"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnPostAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="11dp"
+        android:text="POST ANSWER"
+        android:textColor="@android:color/secondary_text_dark"
+        android:textSize="15sp" />
+</LinearLayout>

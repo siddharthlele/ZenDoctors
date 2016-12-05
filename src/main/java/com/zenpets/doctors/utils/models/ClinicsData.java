@@ -9,6 +9,7 @@ public class ClinicsData {
     private String clinicAddress;
     private String clinicCity;
     private String clinicState;
+    private String clinicLocality;
     private String clinicPinCode;
     private String clinicLandmark;
     private String clinicCountry;
@@ -20,7 +21,7 @@ public class ClinicsData {
     public ClinicsData() {
     }
 
-    public ClinicsData(String clinicSubscription, String clinicName, String clinicContactPerson, String clinicPhone, String clinicAddress, String clinicCity, String clinicState, String clinicPinCode, String clinicLandmark, String clinicCountry, String clinicCurrency, Double clinicLatitude, Double clinicLongitude, String clinicLogo) {
+    public ClinicsData(String clinicSubscription, String clinicName, String clinicContactPerson, String clinicPhone, String clinicAddress, String clinicCity, String clinicState, String clinicLocality, String clinicPinCode, String clinicLandmark, String clinicCountry, String clinicCurrency, Double clinicLatitude, Double clinicLongitude, String clinicLogo) {
         this.clinicSubscription = clinicSubscription;
         this.clinicName = clinicName;
         this.clinicContactPerson = clinicContactPerson;
@@ -28,6 +29,7 @@ public class ClinicsData {
         this.clinicAddress = clinicAddress;
         this.clinicCity = clinicCity;
         this.clinicState = clinicState;
+        this.clinicLocality = clinicLocality;
         this.clinicPinCode = clinicPinCode;
         this.clinicLandmark = clinicLandmark;
         this.clinicCountry = clinicCountry;
@@ -63,6 +65,10 @@ public class ClinicsData {
 
     public String getClinicState() {
         return clinicState;
+    }
+
+    public String getClinicLocality() {
+        return clinicLocality;
     }
 
     public String getClinicPinCode() {

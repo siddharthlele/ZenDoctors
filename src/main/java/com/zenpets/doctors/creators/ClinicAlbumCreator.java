@@ -15,7 +15,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -130,7 +129,7 @@ public class ClinicAlbumCreator extends AppCompatActivity {
             myDir.mkdirs();
             final String imageNumber = String.valueOf(i + 1);
             String fName = "photo" + imageNumber + ".jpg";
-            Log.e("FILE NAME", fName);
+//            Log.e("FILE NAME", fName);
             File file = new File(myDir, fName);
             if (file.exists()) file.delete();
 
@@ -142,7 +141,7 @@ public class ClinicAlbumCreator extends AppCompatActivity {
 
                 /** GET THE FINAL CLINIC IMAGE URI **/
                 Uri uri = Uri.fromFile(file);
-                Log.e("URI", String.valueOf(uri));
+//                Log.e("URI", String.valueOf(uri));
 
                 String FILE_NAME = CLINIC_NAME.replaceAll(" ", "_").toLowerCase().trim() + "_" + USER_ID + "_" + fName;
                 storageReference = FirebaseStorage.getInstance().getReference();
